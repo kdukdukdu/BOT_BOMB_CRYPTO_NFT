@@ -1,16 +1,20 @@
 # BOT_BOMB_CRYPTO_NFT
+
 BOTBOMBCRYPTOAUTOCLICK
-Seja bem vindo. Aplicação para ajudar a comunidade BombCrypto.
+
+Seja bem vindo. Aplicação para ajudar a comunidade BombCrypto, ter uma noite mais tranquila :> .
 
 SE GOSTOU DO BOOT BOMBCRYPTO E QUER ME PAGAR UM CAFÉ/BCOINHA :).
-MINHA CARTEIRA
 
-CARTEIRA WALET: 0xAc8b000865BdBcD6C4eD4Ac85475Afd57DD2244D
+CARTEIRA WALET: 
+0xAc8b000865BdBcD6C4eD4Ac85475Afd57DD2244D
 
 VEJA O VIDEO TUTORIA NO CANAL. NÃO ESQUECE DE SEGUIR, COMPARTILHAR E DEIXAR O LIKE
 https://youtu.be/Z_AdnG3eCwU
-#####################################################################
-REQUISITOS
+
+################################REQUISITOS#####################################
+
+
 #1° INSTALAR O PYTHON (BUSCAR INSTALAR A ULTIMA VERSÃO)
 https://www.python.org/
 
@@ -30,11 +34,17 @@ python -m pip install --upgrade pip
 
 ->>>>>>>>>>>>>2° INSTALA TODOS OS PACOTES PARA QUE O BOMB CONSIGA RODAR
 pip install -r requirements.txt
+
+
 #############################INICIAR O BOOT##############################
+
+
 ------>>>>>>>>CONECTA NA METAMASK, ABRE NA TELA PRINCIPAL E AGUARDA O BOOT FUNCIONAR :)
 python BOMB2022_V1.PY ou py BOMB2022_V1.py
 python BOMB2022_V2.PY ou py BOMB2022_V2.py
 
 #PARA SAIR, APERTAR CTRL+C
+
+
 ########################################################################
 
