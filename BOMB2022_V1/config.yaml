@@ -1,0 +1,26 @@
+---
+  cont_log_bomb: 2
+  time_intervals:
+    check_bt_login: 3 #min - ok VERIFICAR POR LOGIN
+    time_refresh_position: 6 #min Sair e Entrar no mesmo mapa
+    hero_comum_work: 60 #TEMPO PARA COLOCAR TODOS HEROES (ALL) PARA TRABALHAR
+    hero_raro_work: 80 
+    hero_sraro_work: 110
+    hero_epico_work: 120 
+    hero_full_work: 90
+    #time_reboot_bot: 140 #Boot Geral - Reiniciar a cada 2h ou 120 min
+    #check_bt_map: 0.5 #min - ok TEMPO PARA VERIFICAR SE FOI FINALIZADO O MAPA E ENTRAR NO PROXIMO
+  # how confident the bot needs to be to click the button 0-1
+  trashhold:
+    default: 0.7
+    commom: 0.8
+    select_wallet_buttons: 0.8
+    go_to_work_btn: 0.9
+    green_bar: 0.9
+    red_bar: 0.9
+
+  scroll_size: 60
+  use_click_and_drag_instead_of_scroll: true #TRUE --> CLICAR E ARRASTAR PARA SELECIONAR HERO
+  click_and_drag_amount: 200
+  only_click_heroes_with_green_bar: false #TRUE --> SE FOREM SOMENTE OS COM STAMINA VERDE OU //FALSE --> TODOS HEROS
+  
