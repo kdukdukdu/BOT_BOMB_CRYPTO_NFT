@@ -9,11 +9,10 @@ SE GOSTOU DO BOOT BOMBCRYPTO E QUER ME PAGAR UM CAFÉ/BCOINHA :).
 CARTEIRA WALET: 
 0xAc8b000865BdBcD6C4eD4Ac85475Afd57DD2244D
 
-VEJA O VIDEO TUTORIA NO CANAL. NÃO ESQUECE DE SEGUIR, COMPARTILHAR E DEIXAR O LIKE
-https://youtu.be/Z_AdnG3eCwU
+VEJA O VIDEO TUTORIA NO CANAL. NÃO ESQUECE DE SEGUIR, COMPARTILHAR, CLICAR NO SINO E DEIXAR O LIKE
+https://youtu.be/xdJdPAd3TEI
 
 ################################REQUISITOS#####################################
-
 
 #1° INSTALAR O PYTHON (BUSCAR INSTALAR A ULTIMA VERSÃO)
 https://www.python.org/
@@ -43,7 +42,7 @@ pip install -r requirements.txt
 python BOMB2022_V1.PY ou py BOMB2022_V1.py
 python BOMB2022_V2.PY ou py BOMB2022_V2.py
 
-#PARA SAIR, APERTAR CTRL+C
+#PARA SAIR, DO BOT, APERTAR CTRL+C
 
 
 ########################################################################
