@@ -505,6 +505,8 @@ def main():
         #print('INICIANDO COM OS COMUNS - ÀS {} '.format(horarioexato()))
         #heroesSelectTpIni(True)
         #updateMapaHero()
+        #print('INICIANDO COM OS RAROS - ÀS {} '.format(horarioexato()))
+        #heroesSelectTpIni(False,True)
 
         t_cont['time_reboot_bot'] = t_cont['hero_comum_work'] = t_cont['hero_raro_work'] = t_cont['hero_sraro_work'] = t_cont['hero_epico_work'] = now_loop #PRA NÃO ENTRAR A PRIMEIRA VEZ UMA VEZ
         ###################################INICIADO O LOOP PRINCIPAL###################################
@@ -525,7 +527,7 @@ def main():
                 updateMapaHero()      
                 print('INICIANDO COM TODOS OS HEROES - ÀS {} '.format(horarioexato()))
                 herosFullWorkIni()
-                updateMapaHero()      
+                
             ####################WORK TRABALHAR HEROS################################  
             if (now - t_cont['hero_sraro_work']) > (c_time_loop['hero_sraro_work'] * 60):
                 t_cont['hero_sraro_work'] = now
