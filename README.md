@@ -11,6 +11,7 @@ CARTEIRA WALET:
 
 <<<<<<<
 VEJA O VIDEO TUTORIA NO CANAL. NÃO ESQUECE DE SEGUIR, COMPARTILHAR E DEIXAR O LIKE
+RESOLUÇÃO DAS GUIAS EM 50% (ZOOM) NAVEGADOR CHROME OU BRAVE!
 ********************** https://www.youtube.com/watch?v=WdL5i8gAFu8 **********************
 =======
 PLAYLIST BOMBCRYPTO
