@@ -1,4 +1,4 @@
-# BOT_BOMB_CRYPTO_NFT
+# BOT_BOMB_CRYPTO_NFT_PYTHON
 
 BOTBOMBCRYPTOAUTOCLICK
 
@@ -11,11 +11,8 @@ CARTEIRA WALET:
 
 <<<<<<<
 VEJA O VIDEO TUTORIA NO CANAL. NÃO ESQUECE DE SEGUIR, COMPARTILHAR E DEIXAR O LIKE
-*********https://youtu.be/Z_AdnG3eCwU*********
+**********************
 =======
-VEJA O VIDEO TUTORIA NO CANAL. NÃO ESQUECE DE SEGUIR, COMPARTILHAR, CLICAR NO SINO E DEIXAR O LIKE
-https://youtu.be/xdJdPAd3TEI
->>>>>>> 439bb321b5905d349bfdfd4de93939a48ffeff93
 
 ################################REQUISITOS#####################################
 https://github.com/kdukdukdu/BOT_BOMB_CRYPTO_NFT
