@@ -13,6 +13,8 @@ CARTEIRA WALET:
 VEJA O VIDEO TUTORIA NO CANAL. NÃO ESQUECE DE SEGUIR, COMPARTILHAR E DEIXAR O LIKE
 ********************** https://www.youtube.com/watch?v=WdL5i8gAFu8 **********************
 =======
+PLAYLIST BOMBCRYPTO
+https://www.youtube.com/playlist?list=PLDbOVRXPGIG6CC7UV--xdWc4NoL4HFhOe
 
 ################################REQUISITOS#####################################
 https://github.com/kdukdukdu/BOT_BOMB_CRYPTO_NFT
