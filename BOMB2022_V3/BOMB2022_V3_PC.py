@@ -340,23 +340,34 @@ def CheckLogin():
                 
 ##########################################################################################
 def herosFullWorkIni():
-    while True:
-        checkXBack()
-        ################APENAS SELEÇÃO ALL - HEROES#############
-        findTelaXY(go_hero_work_ini,True)
-        #print('COLOCANDO OS HEROS PARA TRABALHAR')
-        time.sleep(2)
-        findTelaXY(go_all_work,True)
-        time.sleep(2)
-        findTelaXY(x_button,True)
-        time.sleep(2)
-        findTelaXY(go_map,True)
-        time.sleep(1)
-        
-        if findTelaXY(go_hero_work_ini) or findTelaXY(x_button):
-            continue
-        else:
-            break
+    #while True:
+    checkXBack()
+    ################APENAS SELEÇÃO ALL - HEROES#############
+    findTelaXY(go_hero_work_ini,True)
+    #print('COLOCANDO OS HEROS PARA TRABALHAR')
+    time.sleep(2)
+    findTelaXY(go_all_work,True)
+    time.sleep(2)
+    findTelaXY(x_button,True)
+    time.sleep(2)
+    findTelaXY(go_map,True)
+    time.sleep(3)
+    
+    checkXBack()
+    ################APENAS SELEÇÃO ALL - HEROES#############
+    findTelaXY(go_hero_work_ini,True)
+    #print('COLOCANDO OS HEROS PARA TRABALHAR')
+    time.sleep(2)
+    findTelaXY(go_all_work,True)
+    time.sleep(2)
+    findTelaXY(x_button,True)
+    time.sleep(2)
+    findTelaXY(go_map,True)
+    time.sleep(3)
+    #    if findTelaXY(go_hero_work_ini) or findTelaXY(x_button):
+    #        continue
+    #    else:
+    #        break
 #######################################################################################
 def heroesSelectTpIni(com = False,rare = False,supr = False,epic = False,leg = False,supleg = False):    
     find = None
@@ -533,7 +544,7 @@ def main():
 
         now_loop = time.time() #INICIO DO PRIMEIRO LOOP PRINCIPAL
 
-        t_cont['time_reboot_bot'] = t_cont['hero_raro_work'] = t_cont['hero_sraro_work'] = t_cont['hero_epico_work'] = now_loop #PRA NÃO ENTRAR A PRIMEIRA VEZ UMA VEZ
+        t_cont['time_reboot_bot'] = t_cont['hero_comum_work'] = t_cont['hero_raro_work'] = t_cont['hero_sraro_work'] = t_cont['hero_epico_work'] = now_loop #PRA NÃO ENTRAR A PRIMEIRA VEZ UMA VEZ
 
         #herosFullWorkIni()
         #print('INICIANDO COM OS COMUNS - ÀS {} '.format(horarioexato()))

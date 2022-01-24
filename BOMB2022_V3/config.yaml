@@ -1,6 +1,6 @@
 ---
   time_intervals:
-    check_bt_login: 0.5 #min - ok VERIFICAR POR LOGIN
+    check_bt_login: 1 #min - ok VERIFICAR POR LOGIN
     time_refresh_position: 7 #min Sair e Entrar no mesmo mapa
     hero_full_work: 120
     hero_comum_work: 50
