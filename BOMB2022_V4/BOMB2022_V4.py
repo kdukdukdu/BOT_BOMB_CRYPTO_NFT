@@ -59,6 +59,7 @@ if __name__ == '__main__':
     go_hero_work_map = cv2.imread('targets/new'+past_name+'/mapa/heroes.png')
     
     ok_bt = cv2.imread('targets/new'+past_name+'/erro/ok.png')#OK
+    loaderro_bt = cv2.imread('targets/new'+past_name+'/erro/load.png')#OK
 
     #bau_d1 = cv2.imread('targets/new'+past_name+'/mapa/dourado_teste/1.png')#buscar bau d
     #bau_d2 = cv2.imread('targets/new'+past_name+'/mapa/dourado_teste/2.png')#buscar bau d
@@ -332,9 +333,9 @@ def CheckLogin():
                 contchk = 0
                 while (contchk < 5):
                     sleepTime(2,'SE TUDO TIVER CERTO, ESTAMOS ENTRANDO NA CONTA  N° '+str(contconta))
-                    sleepTime(5,'SÓ AGUARDAR 100% ATÉ A TELA INICIAL :)')
                     
                     contchk = contchk + 1
+                    sleepTime(3,'SÓ AGUARDAR 100% ATÉ A TELA INICIAL :) - TENTATIVA N° '+contchk)
                     
                     if(findTelaXY(go_hero_work_ini)):
                         
@@ -351,6 +352,11 @@ def CheckLogin():
 
                         break
 
+                if(findTelaXY(loaderro_bt)):
+                    print('O BOMBER DEVE ESTAR EM MANUTENÇÃO - TENTAREMOS LOGIN')
+                    findTelaXY(loaderro_bt,True,True,0,0,True,True) #ATUALIZA A 1° PAGINA
+                    sleepTime(10,'IREMOS VERIFICAR NOVAMENTE')
+                    
                 contconta = contconta + 1
                 
 ##########################################################################################
