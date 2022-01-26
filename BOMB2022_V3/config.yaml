@@ -2,11 +2,11 @@
   time_intervals:
     check_bt_login: 1 #min - ok VERIFICAR POR LOGIN
     time_refresh_position: 7 #min Sair e Entrar no mesmo mapa
-    hero_full_work: 120
+    hero_full_work: 145
     hero_comum_work: 50
     hero_raro_work: 70 
     hero_sraro_work: 90
-    hero_epico_work: 120 
+    hero_epico_work: 110 
     time_reboot_bot: 140
   time_work_mapa:
     hero_full_work: 25
