@@ -289,6 +289,11 @@ movPoint = False,movPointIniaddX = 0, movPointIniaddY = 0, movPointEndaddX = 0, 
 ##########################################################################################
 def CheckLogin():
     #checkXBack()
+    if(findTelaXY(loaderro_bt)):
+        print('O BOMBER DEVE ESTAR EM MANUTENÇÃO - TENTAREMOS LOGIN')
+        findTelaXY(loaderro_bt,True,True,0,0,True) #ATUALIZA A 1° PAGINA
+        sleepTime(10,'IREMOS VERIFICAR NOVAMENTE')
+
     while findTelaXY(go_conect2) or findTelaXY(go_conect) or findTelaXY(ok_bt) or findTelaXY(go_select_sign_meta1) or findTelaXY(go_select_sign_meta11) or findTelaXY(go_select_sign_meta2) or findTelaXY(go_select_sign_meta3): 
         findTelaXY(go_select_sign_meta1,True,True,-50,-200)
         findTelaXY(go_select_sign_meta11,True,True,-50,-200)
@@ -336,7 +341,7 @@ def CheckLogin():
                     sleepTime(2,'SE TUDO TIVER CERTO, ESTAMOS ENTRANDO NA CONTA  N° '+str(contconta))
                     
                     contchk = contchk + 1
-                    sleepTime(3,'SÓ AGUARDAR 100% ATÉ A TELA INICIAL :) - TENTATIVA N° '+contchk)
+                    sleepTime(3,'SÓ AGUARDAR 100% ATÉ A TELA INICIAL :) - TENTATIVA N° '+str(contchk))
                     
                     if(findTelaXY(go_hero_work_ini)):
                         
