@@ -1,0 +1,10 @@
+python -m pip install -U opencv-python --prefer-binary
+python -m pip install -U python-time --prefer-binary
+python -m pip install -U numpy --prefer-binary
+python -m pip install -U matplotlib --prefer-binary
+python -m pip install -U mss --prefer-binary
+python -m pip install -U pyautogui --prefer-binary
+python -m pip install -U pyyaml --prefer-binary
+python -m pip install -U requests --prefer-binary
+python -m pip install -U datetime2 --prefer-binary
+python -m pip install -U random2 --prefer-binary

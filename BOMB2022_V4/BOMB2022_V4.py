@@ -575,7 +575,7 @@ def main():
 
         now_loop = time.time() #INICIO DO PRIMEIRO LOOP PRINCIPAL
 
-        t_cont['time_reboot_bot'] = t_cont['hero_full_work'] = t_cont['hero_raro_work'] = t_cont['hero_sraro_work'] = t_cont['hero_epico_work'] = now_loop #PRA NÃO ENTRAR A PRIMEIRA VEZ UMA VEZ
+        t_cont['time_reboot_bot'] = t_cont['hero_comum_work'] = t_cont['hero_raro_work'] = t_cont['hero_sraro_work'] = t_cont['hero_epico_work'] = now_loop #PRA NÃO ENTRAR A PRIMEIRA VEZ UMA VEZ
 
         ###################################INICIADO O LOOP PRINCIPAL###################################
         while True:
