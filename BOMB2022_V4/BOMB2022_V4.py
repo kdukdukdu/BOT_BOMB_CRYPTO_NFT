@@ -17,6 +17,7 @@ if __name__ == '__main__':
     c_time_loop = config['time_intervals']
     c_time_work_map = config['time_work_mapa']
     c_time_zoom = config['zoom_nav_bomber']
+    select_bomber_tp = config['select_bomber_tp']
     
     if(c_time_zoom['zoom_33']):
         print('OBS: ZOOM NAVEGADOR DE TODAS AS CONTAS DEVE ESTAR EM --> 33%')
@@ -288,7 +289,7 @@ movPoint = False,movPointIniaddX = 0, movPointIniaddY = 0, movPointEndaddX = 0, 
         return False
 ##########################################################################################
 def CheckLogin():
-    #checkXBack()
+    #checkXBackIniPag()
     if(findTelaXY(loaderro_bt)):
         print('O BOMBER DEVE ESTAR EM MANUTENÇÃO - TENTAREMOS LOGIN')
         findTelaXY(loaderro_bt,True,True,0,0,True) #ATUALIZA A 1° PAGINA
@@ -343,7 +344,6 @@ def CheckLogin():
                     sleepTime(3,'SÓ AGUARDAR 100% ATÉ A TELA INICIAL :) - TENTATIVA N° '+str(contchk))
                     
                     if(findTelaXY(go_hero_work_ini)):
-                        
                         sleepTime(2,'INICIANDO FULL - TODOS OS HEROES - ÀS {} '.format(horarioexato()))
                         ################APENAS SELEÇÃO ALL - HEROES#############
                         findTelaXY(go_hero_work_ini,True)
@@ -367,41 +367,36 @@ def CheckLogin():
 ##########################################################################################
 def herosFullWorkIni():
     #while True:
-    checkXBack()
+    checkXBackIniPag()
     ################APENAS SELEÇÃO ALL - HEROES#############
     findTelaXY(go_hero_work_ini,True)
     #print('COLOCANDO OS HEROS PARA TRABALHAR')
-    time.sleep(2)
+    time.sleep(1)
     findTelaXY(go_all_work,True)
-    time.sleep(2)
+    time.sleep(1)
     findTelaXY(x_button,True)
-    time.sleep(2)
+    time.sleep(1)
     findTelaXY(go_map,True)
-    time.sleep(3)
+    time.sleep(2)
     
-    checkXBack()
+    #checkXBackIniPag()
     ################APENAS SELEÇÃO ALL - HEROES#############
     findTelaXY(go_hero_work_ini,True)
+    findTelaXY(go_hero_work_ini,True)
     #print('COLOCANDO OS HEROS PARA TRABALHAR')
-    time.sleep(2)
+    time.sleep(1)
     findTelaXY(go_all_work,True)
-    time.sleep(2)
+    time.sleep(1)
     findTelaXY(x_button,True)
-    time.sleep(2)
+    time.sleep(1)
     findTelaXY(go_map,True)
-    time.sleep(3)
-    #COLOCA TODOS DUAS VEZES - PRA EVITAR -- BUGG
-    #    if findTelaXY(go_hero_work_ini) or findTelaXY(x_button):
-    #        continue
-    #    else:
-    #        break
+    time.sleep(2)
 #######################################################################################
 def heroesSelectTpIni(com = False,rare = False,supr = False,epic = False,leg = False,supleg = False):    
     find = None
 
-    checkXBack()
+    checkXBackIniPag()
     findTelaXY(go_hero_work_ini,True)
-    time.sleep(2)
     sleepTime(3,'COLOCANDO OS HEROS PARA TRABALHAR')
 
     if(com):
@@ -443,113 +438,53 @@ def heroesSelectTpIni(com = False,rare = False,supr = False,epic = False,leg = F
     findTelaXY(go_map,True)
 
 def updateMapaHero():
-    sleepTime(2,' ==> ATUALIZANDO A POSIÇÃO DOS BOMBER HEROES')
-    checkXBack()
-    #time.sleep(2)
-    findTelaXY(go_back,True)
-    time.sleep(1)
-    findTelaXY(x_button,True)
-    time.sleep(1)
+    sleepTime(2,' ATUALIZANDO A POSIÇÃO DOS BOMBER HEROES ')
+    checkXBackIniPag()
     findTelaXY(go_map,True)
 
 def newMap():
-    sleepTime(2,' ==> ENTRANDO EM UM NOVO MAPA')
+    sleepTime(2,' ENTRANDO EM UM NOVO MAPA')
     #sleepTime(2,'ABRINDO O PRÓXIMO MAPA')
-    checkXBack()
+    checkXBackIniPag()
     findTelaXY(go_new_map,True)
 
 def reloadContas():
     desativarHeroes()
-    
-    findTelaXY(go_hero_work_ini,True,False,0,-100,True) # CLICA ACIMA E ATUALIZA CADA UMA DAS PAGINAS
-    
+    findTelaXY(go_hero_work_ini,True,False,0,-100,True) # CLICA ACIMA E ATUALIZA CADA UMA DAS PAGINAS   
     CheckLogin()
 
 def desativarHeroes():
-    checkXBack()
+    checkXBackIniPag()
     findTelaXY(go_hero_work_ini,True)
     time.sleep(2)
     findTelaXY(go_all_nowork,True)
-    checkXBack()
+    checkXBackIniPag()
 
  ################FUNÇÕES AUXILIARES#############   
-def checkXBack():
+def checkXBackIniPag():
     while(findTelaXY(go_back) or findTelaXY(x_button)):
         findTelaXY(go_back,True)
         findTelaXY(x_button,True)
         time.sleep(1)
-        findTelaXY(go_back,True)
         findTelaXY(x_button,True)
+        findTelaXY(go_back,True)
         time.sleep(1)
 
-def sleepTime(qtdseg = 1, info_msg = ''):
+def sleepTime(qtdseg = 1, info_msg = '', newline = False):
     #sys.stdout.write('Será necessário aguardar '+str(y)+'s')
+    print('\n')
     for x in range((qtdseg), 0,-1):
         print(f'{"Aguarde: "+str(x)} seg. ===>  {info_msg} \r', end="")
         time.sleep(1) 
-    print('\n')
+    if(newline):
+        print('\n')
 
 def horarioexato():
     return datetime.today().strftime("%Hh%Mmin%Ss DO DIA %d/%m/%Y")
 ################FUNÇÕES AUXILIARES#############   
 def main():
     cont = 0
-    #listFind = [hero_supr]
-    #print('INICIANDO COM OS RAROS - ÀS {} '.format(horarioexato()))
-    #heroesSelectTpIni(False,False,False,True)
-    #reloadContas()
-    #print('INICIANDO COM OS COMUNS - ÀS {} '.format(horarioexato()))
-    #heroesSelectTpIni(True)
-    #time.sleep(1)
-    #heroesSelectTpIni(False,False,True)
-    #time.sleep(1)
-    #heroesSelectTpIni(False,True)
-    #time.sleep(1)
-    #heroesSelectTpIni(True)
-    #herosFullWorkIni()
-    #time.sleep(3)
-    #updateMapaHero()
-    #updateMapaHero()
-    #print('INICIANDO COM OS RAROS - ÀS {} '.format(horarioexato()))
-    #heroesSelectTpIni(False,True)
-    #return
-###########################AMBIENTE DE TESTE########################################
-    
-    #sleepTime(2,'VAMOS BUSCAR OS BAUS :)')
-    #if(findTelaXY(bau_d1,True)):
-      #  print('BAU 01 DOURADO ENCONTRADO!')
-    
-    #if(findTelaXY(bau_d2,True)):
-     #   print('BAU 02 DOURADO ENCONTRADO!')
-    
-    #if(findTelaXY(bau_m1,True)):
-     #   print('BAU 01 MADEIRA ENCONTRADO!')
-    #findTelaXY(bau_d2,True)
-    ##################################################################
-    #listFind = [hero_raro,hero_commum]
-                #150,-5
-    #findTelaXY(x_button,True)
-    #findTelaXY(go_back,True)
-    #findTelaXY(go_hero_work_ini,True)
-    #findBoxImgPoints(go_upgrade,-390,-190,260,195,listFind,120,-10,True,True,20,-5,0,18,3)
-    #findTelaXY(x_button,True)
-    #time.sleep(1)
-    #findTelaXY(go_hero_work_ini,True)
-    #findBoxImgPoints(go_upgrade,-390,-190,260,195,listFind,120,-10,True,True,20,-5,0,18,3)
-    #time.sleep(1)
-    #findTelaXY(x_button,True)
-    #time.sleep(1)
-    #findTelaXY(go_map,True)
-    #findTelaXY(go_upgrade,True,False,-300)
-    ######################################################################################
-    #if(findTelaXY(bau_m2)):
-    #    cont = cont + 1
-    #    print('BAU 02 MADEIRA ENCONTRADO!')
-
-    #print('\n TOTAL DE BAUS ENCONTRADOS:'+str(cont))
-   # sleepTime(2,'Finalizado')
-    #findTelaXY(go_select_sign_meta1,True,True,-50,-200)
-      
+ ###########################AMBIENTE DE TESTE########################################   
  ###########################AMBIENTE DE TESTE########################################
     while True:
         
@@ -561,13 +496,10 @@ def main():
         t_cont = {
             "check_bt_login" : 0,#ok CHEK ERRO - LOGIN ETC
             "time_refresh_position" : 0, #ok ATUALIZAR MAPA SAIR E VOLTAR
-            "hero_comum_work" : 0,#ok
-            "hero_raro_work" : 0,
-            "hero_sraro_work" : 0,
-            "hero_epico_work" : 0,
-            "hero_full_work" : 0,
-            "time_reboot_bot": 0
+            "hero_comum_work" : 0,"hero_raro_work" : 0,"hero_sraro_work" : 0,
+            "hero_epico_work" : 0,"hero_full_work" : 0,"time_reboot_bot": 0
         }
+
         t_work_map = {
             "now_work_hero": 0, #VARÍAVEL QUE PEGARA SEMPRE O VALOR DA HORA EXATA AO COLOCAR HEROES
             "time_work_hero": 0 #VARIÁVEL QUE VAI PEGAR O TIME DETERMINADO PARA FICAR TRABALHANDO NO MAPA
@@ -575,85 +507,88 @@ def main():
 
         now_loop = time.time() #INICIO DO PRIMEIRO LOOP PRINCIPAL
 
-        t_cont['time_reboot_bot'] = t_cont['hero_comum_work'] = t_cont['hero_raro_work'] = t_cont['hero_sraro_work'] = t_cont['hero_epico_work'] = now_loop #PRA NÃO ENTRAR A PRIMEIRA VEZ UMA VEZ
+        t_cont['time_reboot_bot'] = t_cont['hero_comum_work'] = now_loop
+        t_cont['hero_raro_work'] = t_cont['hero_sraro_work'] = now_loop
+        t_cont['hero_epico_work'] = now_loop #PRA NÃO ENTRAR A PRIMEIRA VEZ UMA VEZ
 
         ###################################INICIADO O LOOP PRINCIPAL###################################
         while True:
             now = time.time()#DEFINE UM TIME AO ENTRAR. EX.: 101516
-            random_number = 0.1*random.uniform(5, 10)   
+            #random_number = 0.1*random.uniform(5, 10)   
 
             ###### CONDIÇÃO - VERIFICA LOGIN & LOGAR - METAMASK - BOMBER - VERIFICAR PAG ERRO
             if (now - t_cont['check_bt_login']) > (c_time_loop['check_bt_login'] * 60):
                 CheckLogin()
                 t_cont['check_bt_login'] = now  
+
+            #################### WORK FULL################################
+            if(select_bomber_tp['full_']):
+                ######COLOCANDO TODOS FULL A 1° VEZ###################
+                if (now - t_cont['hero_full_work']) > (c_time_loop['hero_full_work'] * 60):
+                    updateMapaHero()
+                    print('INICIANDO FULL COM TODOS OS HEROES - ÀS {} '.format(horarioexato()))
+                    herosFullWorkIni()
+
+                    t_cont['hero_full_work'] = now
+                    
+                    t_work_map['now_work_hero'] = now 
+                    t_work_map['time_work_hero'] = c_time_work_map['hero_full_work']
+            ##############################################################    
             
-            if (now - t_cont['hero_comum_work']) > (c_time_loop['hero_comum_work'] * 60):
-                updateMapaHero()
-                print('INICIANDO COM OS COMUNS - ÀS {} '.format(horarioexato()))
-                heroesSelectTpIni(True)
+            #################### WORK RARIDADE ################################
+            if(select_bomber_tp['raridade_']):
+                if (now - t_cont['hero_comum_work']) > (c_time_loop['hero_comum_work'] * 60):
+                    updateMapaHero()
+                    print('INICIANDO COM OS COMUNS - ÀS {} '.format(horarioexato()))
+                    heroesSelectTpIni(True)
 
-                t_cont['hero_comum_work'] = now
+                    t_cont['hero_comum_work'] = now
+                    
+                    t_work_map['now_work_hero'] = now 
+                    t_work_map['time_work_hero'] = c_time_work_map['hero_comum_work']
                 
-                t_work_map['now_work_hero'] = now 
-                t_work_map['time_work_hero'] = c_time_work_map['hero_comum_work']
+                if (now - t_cont['hero_sraro_work']) > (c_time_loop['hero_sraro_work'] * 60):
+                    updateMapaHero()
+                    print('INICIANDO COM OS SUPER RAROS - ÀS {} '.format(horarioexato()))
+                    heroesSelectTpIni(False,False,True)
 
-            ######COLOCANDO TODOS FULL A 1° VEZ###################
-            if (now - t_cont['hero_full_work']) > (c_time_loop['hero_full_work'] * 60):
-                updateMapaHero()
-                print('INICIANDO FULL COM TODOS OS HEROES - ÀS {} '.format(horarioexato()))
-                herosFullWorkIni()
+                    t_cont['hero_sraro_work'] = now
 
-                t_cont['hero_full_work'] = now
+                    t_work_map['now_work_hero'] = now 
+                    t_work_map['time_work_hero'] = c_time_work_map['hero_sraro_work']
+
+                if (now - t_cont['hero_raro_work']) > (c_time_loop['hero_raro_work'] * 60):
+                    updateMapaHero()
+                    print('INICIANDO COM OS RAROS - ÀS {} '.format(horarioexato()))
+                    heroesSelectTpIni(False,True)
+
+                    t_cont['hero_raro_work'] = now
+                    
+                    t_work_map['now_work_hero'] = now 
+                    t_work_map['time_work_hero'] = c_time_work_map['hero_raro_work']
                 
-                t_work_map['now_work_hero'] = now 
-                t_work_map['time_work_hero'] = c_time_work_map['hero_full_work']
-                #updateMapaHero()
-            ####################WORK TRABALHAR HEROS################################  
-            if (now - t_cont['hero_sraro_work']) > (c_time_loop['hero_sraro_work'] * 60):
-                updateMapaHero()
-                print('INICIANDO COM OS SUPER RAROS - ÀS {} '.format(horarioexato()))
-                heroesSelectTpIni(False,False,True)
+                if (now - t_cont['hero_epico_work']) > (c_time_loop['hero_epico_work'] * 60):
+                    updateMapaHero()
+                    print('INICIANDO COM OS ÉPICOS - ÀS {} '.format(horarioexato()))
+                    heroesSelectTpIni(False,False,False,True)
+                    
+                    t_cont['hero_epico_work'] = now
+                    
+                    t_work_map['now_work_hero'] = now 
+                    t_work_map['time_work_hero'] = c_time_work_map['hero_epico_work']
 
-                t_cont['hero_sraro_work'] = now
-
-                t_work_map['now_work_hero'] = now 
-                t_work_map['time_work_hero'] = c_time_work_map['hero_sraro_work']
-
-                #updateMapaHero()
-
-            if (now - t_cont['hero_raro_work']) > (c_time_loop['hero_raro_work'] * 60):
-                updateMapaHero()
-                print('INICIANDO COM OS RAROS - ÀS {} '.format(horarioexato()))
-                heroesSelectTpIni(False,True)
-
-                t_cont['hero_raro_work'] = now
-                
-                t_work_map['now_work_hero'] = now 
-                t_work_map['time_work_hero'] = c_time_work_map['hero_raro_work']
-                #updateMapaHero()
+            ##############################################################    
             
-            if (now - t_cont['hero_epico_work']) > (c_time_loop['hero_epico_work'] * 60):
-                updateMapaHero()
-                print('INICIANDO COM OS ÉPICOS - ÀS {} '.format(horarioexato()))
-                heroesSelectTpIni(False,False,False,True)
-                
-                t_cont['hero_epico_work'] = now
-                
-                t_work_map['now_work_hero'] = now 
-                t_work_map['time_work_hero'] = c_time_work_map['hero_epico_work']
-
-                #updateMapaHero()
-
-            ###### CONDIÇÃO - SAIR DO MAPA - VOLTAR E ENTRAR NO MAPA
-            if (now - t_cont['time_refresh_position']) > (random_number*c_time_loop['time_refresh_position'] * 60):
+            #################### CONDIÇÕES MAPA ################################
+            if (now - t_cont['time_refresh_position']) > (c_time_loop['time_refresh_position'] * 60):
                 updateMapaHero() 
                 t_cont['time_refresh_position'] = now
             
-            if (now - t_cont['time_reboot_bot']) > (random_number*c_time_loop['time_reboot_bot'] * 60):
+            if (now - t_cont['time_reboot_bot']) > (c_time_loop['time_reboot_bot'] * 60):
                 print('VAMOS REINICIAR TODAS AS CONTAS - ÀS {} '.format(horarioexato()))
                 reloadContas()
-
                 t_cont['time_reboot_bot'] = now
+                
                 t_work_map['now_work_hero'] = now 
                 t_work_map['time_work_hero'] = c_time_work_map['hero_full_work']
 
@@ -662,7 +597,7 @@ def main():
                 print('DESATIVANDO TODOS OS HEROES - ÀS {} '.format(horarioexato()))
                 desativarHeroes()
                 desativarHeroes()
-
+                
                 t_work_map['now_work_hero'] = now
                 t_work_map['time_work_hero'] = 1000000000  
             ##$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$#    
