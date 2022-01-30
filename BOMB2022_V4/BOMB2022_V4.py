@@ -373,24 +373,13 @@ def herosFullWorkIni():
     #print('COLOCANDO OS HEROS PARA TRABALHAR')
     time.sleep(1)
     findTelaXY(go_all_work,True)
-    time.sleep(1)
-    findTelaXY(x_button,True)
-    time.sleep(1)
-    findTelaXY(go_map,True)
     time.sleep(2)
-    
-    #checkXBackIniPag()
-    ################APENAS SELEÇÃO ALL - HEROES#############
-    findTelaXY(go_hero_work_ini,True)
-    findTelaXY(go_hero_work_ini,True)
-    #print('COLOCANDO OS HEROS PARA TRABALHAR')
-    time.sleep(1)
     findTelaXY(go_all_work,True)
-    time.sleep(1)
+    time.sleep(3)
     findTelaXY(x_button,True)
     time.sleep(1)
     findTelaXY(go_map,True)
-    time.sleep(2)
+    time.sleep(1)
 #######################################################################################
 def heroesSelectTpIni(com = False,rare = False,supr = False,epic = False,leg = False,supleg = False):    
     find = None
