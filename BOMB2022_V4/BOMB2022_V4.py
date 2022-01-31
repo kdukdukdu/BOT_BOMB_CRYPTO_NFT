@@ -427,7 +427,7 @@ def heroesSelectTpIni(com = False,rare = False,supr = False,epic = False,leg = F
     findTelaXY(go_map,True)
 
 def updateMapaHero():
-    sleepTime(2,' ATUALIZANDO A POSIÇÃO DOS BOMBER HEROES ')
+    sleepTime(2,' ATUALIZANDO A POSIÇÃO DOS BOMBER HEROES ÀS {} '.format(horarioexato()))
     checkXBackIniPag()
     findTelaXY(go_map,True)
 
