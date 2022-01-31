@@ -461,7 +461,6 @@ def checkXBackIniPag():
 
 def sleepTime(qtdseg = 1, info_msg = '', newline = False):
     #sys.stdout.write('Será necessário aguardar '+str(y)+'s')
-    print('\n')
     for x in range((qtdseg), 0,-1):
         print(f'{"Aguarde: "+str(x)} seg. ===>  {info_msg} \r', end="")
         time.sleep(1) 
