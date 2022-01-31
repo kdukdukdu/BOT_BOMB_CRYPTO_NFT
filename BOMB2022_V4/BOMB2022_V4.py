@@ -447,6 +447,11 @@ def desativarHeroes():
     findTelaXY(go_hero_work_ini,True)
     time.sleep(2)
     findTelaXY(go_all_nowork,True)
+    time.sleep(2)
+    findTelaXY(go_hero_work_ini,True)
+    time.sleep(3)
+    findTelaXY(go_all_nowork,True)
+    time.sleep(2)
     checkXBackIniPag()
 
  ################FUNÇÕES AUXILIARES#############   
@@ -583,7 +588,6 @@ def main():
             ######TIME WOR IN MAPA POR RARIDADE - CHECK 1 MIN###################
             if (now - t_work_map['now_work_hero']) > (t_work_map['time_work_hero'] * 60):
                 print('DESATIVANDO TODOS OS HEROES - ÀS {} '.format(horarioexato()))
-                desativarHeroes()
                 desativarHeroes()
                 
                 t_work_map['now_work_hero'] = now
