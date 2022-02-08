@@ -61,6 +61,9 @@ if __name__ == '__main__':
     
     ok_bt = cv2.imread('targets/new'+past_name+'/erro/ok.png')#OK
     loaderro_bt = cv2.imread('targets/new'+past_name+'/erro/load.png')#OK
+    erromemory1_bt = cv2.imread('targets/new'+past_name+'/erro/erromemory1.png')#OK
+    erromemory2_bt = cv2.imread('targets/new'+past_name+'/erro/erromemory2.png')#OK
+    
 
     #bau_d1 = cv2.imread('targets/new'+past_name+'/mapa/dourado_teste/1.png')#buscar bau d
     #bau_d2 = cv2.imread('targets/new'+past_name+'/mapa/dourado_teste/2.png')#buscar bau d
@@ -290,9 +293,13 @@ movPoint = False,movPointIniaddX = 0, movPointIniaddY = 0, movPointEndaddX = 0, 
 ##########################################################################################
 def CheckLogin():
     #checkXBackIniPag()
-    if(findTelaXY(loaderro_bt)):
+    if(findTelaXY(loaderro_bt) or findTelaXY(erromemory1_bt) or findTelaXY(erromemory2_bt)):
         print('O BOMBER DEVE ESTAR EM MANUTENÇÃO - TENTAREMOS LOGIN')
         findTelaXY(loaderro_bt,True,True,0,0,True) #ATUALIZA A 1° PAGINA
+        findTelaXY(erromemory1_bt,True,True) #ATUALIZA A 1° PAGINA
+        time.sleep(2)
+        findTelaXY(erromemory2_bt,True,True,0,0,True) #ATUALIZA A 1° PAGINA
+
         sleepTime(10,'IREMOS VERIFICAR NOVAMENTE')
 
     while findTelaXY(go_conect2) or findTelaXY(go_conect) or findTelaXY(ok_bt) or findTelaXY(go_select_sign_meta1) or findTelaXY(go_select_sign_meta11) or findTelaXY(go_select_sign_meta2) or findTelaXY(go_select_sign_meta3): 
