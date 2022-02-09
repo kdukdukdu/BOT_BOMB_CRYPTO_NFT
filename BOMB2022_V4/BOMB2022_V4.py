@@ -340,7 +340,7 @@ def CheckLogin():
                 sleepTime(15,'INICIANDO O LOGIN NA(S) CONTA  N° '+str(contconta)) #TEMPO CONSIDERÁVEL PARA ATUALIZAR PAGINA
                 findTelaXY(go_conect,True,True,0,0,False,True) #CLICA APENAS NA 1° PAGINA
 
-                sleepTime(13,'CLICANDO NO BOTÃO CONECTED N° '+str(contconta))#TEMPO CONSIDERÁVEL PARA ATUALIZAR PAGINA
+                sleepTime(15,'CLICANDO NO BOTÃO CONECTED N° '+str(contconta))#TEMPO CONSIDERÁVEL PARA ATUALIZAR PAGINA
                 #ENQUANTO TIVER A CAIXA DE CONFIRMAÇÃO METAMASK ELE FICA AQUI DENTRO TENTANDO CLICAR.
                 contx = 1
 
