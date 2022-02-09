@@ -64,7 +64,7 @@ if __name__ == '__main__':
     erromemory1_bt = cv2.imread('targets/new'+past_name+'/erro/erromemory1.png')#OK
     erromemory2_bt = cv2.imread('targets/new'+past_name+'/erro/erromemory2.png')#OK
     erroupdate1_bt = cv2.imread('targets/new'+past_name+'/erro/erro_ok_update_1.png')#OK
-    erroupdate2_bt = cv2.imread('targets/new'+past_name+'/erro/erro_ok_update_1.png')#OK
+    erroupdate2_bt = cv2.imread('targets/new'+past_name+'/erro/erro_ok_update_2.png')#OK
     
 
     #bau_d1 = cv2.imread('targets/new'+past_name+'/mapa/dourado_teste/1.png')#buscar bau d
