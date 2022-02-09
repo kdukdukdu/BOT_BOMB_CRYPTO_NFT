@@ -355,6 +355,8 @@ def CheckLogin():
                     sleepTime(2)
                     findTelaXY(go_select_sign_meta2,True)
                     findTelaXY(go_select_sign_meta3,True)
+                    findTelaXY(go_select_sign_meta2,True)
+                    findTelaXY(go_select_sign_meta3,True)
                     contx = contx + 1
 
                 contchk = 0
