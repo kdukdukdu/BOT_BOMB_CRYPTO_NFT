@@ -199,7 +199,9 @@ def findTelaXY(find_in_inscreen,onclicked= False,doubleclick = False,addX = 0,ad
             
             if(f5Pag):
                 time.sleep(1)
-                pyautogui.hotkey('ctrl','shift' 'r')
+                pyautogui.hotkey('ctrl','shift', 'r')
+                time.sleep(3.0)
+                pyautogui.hotkey('ctrl','f5')
                 time.sleep(3.0)
                 pyautogui.hotkey('f5')
 
@@ -297,10 +299,12 @@ movPoint = False,movPointIniaddX = 0, movPointIniaddY = 0, movPointEndaddX = 0, 
 ##########################################################################################
 def CheckLogin():
     #checkXBackIniPag()
-    if(findTelaXY(erroupdate1_bt) or findTelaXY(erroupdate2_bt)):
-        findTelaXY(erroupdate1_bt,True,True) #ATUALIZA APÓS UPDATE - MANUTENÇÃO 1
-        findTelaXY(erroupdate2_bt,True,True) #ATUALIZA APÓS UPDATE - MANUTENÇÃO1
+    if(findTelaXY(erroupdate1_bt) or findTelaXY(erroupdate2_bt) or findTelaXY(erroinit_bt)):
+        findTelaXY(erroupdate1_bt,True) #ATUALIZA APÓS UPDATE - MANUTENÇÃO 1
+        findTelaXY(erroupdate2_bt,True) #ATUALIZA APÓS UPDATE - MANUTENÇÃO1
+        time.sleep(1)
         findTelaXY(erroinit_bt,True,True,0,0,True) #ATUALIZA APÓS UPDATE - MANUTENÇÃO1
+        sleepTime(10,'ATUALIZANDO APÓS UMA POSSÍVEL MANUTENÇÃO DO JOGO')
 
     if(findTelaXY(loaderro_bt) or findTelaXY(erromemory1_bt) or findTelaXY(erromemory2_bt)):
         print('O BOMBER DEVE ESTAR EM MANUTENÇÃO - TENTAREMOS LOGIN')
@@ -336,7 +340,7 @@ def CheckLogin():
                 sleepTime(15,'INICIANDO O LOGIN NA(S) CONTA  N° '+str(contconta)) #TEMPO CONSIDERÁVEL PARA ATUALIZAR PAGINA
                 findTelaXY(go_conect,True,True,0,0,False,True) #CLICA APENAS NA 1° PAGINA
 
-                sleepTime(10,'CLICANDO NO BOTÃO CONECTED N° '+str(contconta))#TEMPO CONSIDERÁVEL PARA ATUALIZAR PAGINA
+                sleepTime(13,'CLICANDO NO BOTÃO CONECTED N° '+str(contconta))#TEMPO CONSIDERÁVEL PARA ATUALIZAR PAGINA
                 #ENQUANTO TIVER A CAIXA DE CONFIRMAÇÃO METAMASK ELE FICA AQUI DENTRO TENTANDO CLICAR.
                 contx = 1
 
