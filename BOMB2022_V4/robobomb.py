@@ -35,6 +35,8 @@ if __name__ == '__main__':
     go_select_sign_meta2 = cv2.imread('targets/new'+past_name+'/login_assinar_meta/assinar2.png')#OK
     go_select_sign_meta3 = cv2.imread('targets/new'+past_name+'/login_assinar_meta/assinar3.png')#OK
 
+    go_conect_meta = cv2.imread('targets/new'+past_name+'/login_assinar_meta/connect_meta.png')
+
     go_map = cv2.imread('targets/new'+past_name+'/treasure-hunt-icon.png')#OK
     go_back = cv2.imread('targets/new'+past_name+'/voltar.png')#OK
     x_button = cv2.imread('targets/new'+past_name+'/x.png')#OK
@@ -316,7 +318,7 @@ def CheckLogin():
 
         sleepTime(10,'IREMOS VERIFICAR NOVAMENTE')
 
-    while findTelaXY(go_conect2) or findTelaXY(go_conect) or findTelaXY(ok_bt) or findTelaXY(go_select_sign_meta1) or findTelaXY(go_select_sign_meta11) or findTelaXY(go_select_sign_meta2) or findTelaXY(go_select_sign_meta3): 
+    while findTelaXY(go_conect2) or findTelaXY(go_conect) or findTelaXY(ok_bt) or findTelaXY(go_select_sign_meta1) or findTelaXY(go_select_sign_meta11) or findTelaXY(go_select_sign_meta2) or findTelaXY(go_select_sign_meta3) or findTelaXY(go_conect_meta): 
         findTelaXY(go_select_sign_meta1,True,True,-50,-200)
         findTelaXY(go_select_sign_meta11,True,True,-50,-200)
         sleepTime(2,'VERIFICANDO POSSÍVEL CONFIRMAÇÃO DE ASSINATURA')
@@ -329,17 +331,19 @@ def CheckLogin():
             sleepTime(12,'IREMOS ATUALIZAR CADA UMA DA(S) PAGINA(S) :)')   
         #########################################################################
         ############################VERIFICAR SE TEM BOTÃO DE CONEXÃO WALET################################
-        if (findTelaXY(go_conect) or findTelaXY(go_conect2)):
+        if (findTelaXY(go_conect) or findTelaXY(go_conect2) or findTelaXY(go_conect_meta)):
             updateMapaHero()
             print('BOTÃO CONECT ENCONTRADO NA TELA! IREMOS DAR F5 ÀS {} '.format(horarioexato()))
             contconta = 1
 
-            while(findTelaXY(go_conect) or findTelaXY(go_conect2)): #CLICA SO NO PRIMEIRO ENTRAR - SERÁ VERIFICADO UM POR UM
+            while(findTelaXY(go_conect) or findTelaXY(go_conect2) or findTelaXY(go_conect_meta)): #CLICA SO NO PRIMEIRO ENTRAR - SERÁ VERIFICADO UM POR UM
                 #findTelaXY(go_conect,True,True,0,-100,True,True) #ATUALIZA A 1° PAGINA
-                findTelaXY(go_conect2,True,True,0,0,True,True) #ATUALIZA A 1° PAGINA
-                sleepTime(15,'INICIANDO O LOGIN NA(S) CONTA  N° '+str(contconta)) #TEMPO CONSIDERÁVEL PARA ATUALIZAR PAGINA
-                findTelaXY(go_conect,True,True,0,0,False,True) #CLICA APENAS NA 1° PAGINA
+                #findTelaXY(go_conect2,True,True,0,0,True,True) #ATUALIZA A 1° PAGINA
 
+                #sleepTime(15,'INICIANDO O LOGIN NA(S) CONTA  N° '+str(contconta)) #TEMPO CONSIDERÁVEL PARA ATUALIZAR PAGINA
+                findTelaXY(go_conect,True,True,0,0,False,True) #CLICA APENAS NA 1° PAGINA
+                time.sleep(2)
+                findTelaXY(go_conect_meta,True,True,0,0,False,True)
                 sleepTime(15,'CLICANDO NO BOTÃO CONECTED N° '+str(contconta))#TEMPO CONSIDERÁVEL PARA ATUALIZAR PAGINA
                 #ENQUANTO TIVER A CAIXA DE CONFIRMAÇÃO METAMASK ELE FICA AQUI DENTRO TENTANDO CLICAR.
                 contx = 1
