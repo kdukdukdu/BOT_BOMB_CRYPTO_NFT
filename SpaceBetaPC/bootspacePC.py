@@ -326,7 +326,7 @@ movPoint = False,movPointIniaddX = 0, movPointIniaddY = 0, movPointEndaddX = 0, 
                 contRepeatMovLoop = contRepeatMovLoop + 1
             time.sleep(1)
             contnav
-            if(contnav >= config_boss['min_nav'] and contnav <= config_boss['max_nav']):
+            if(contnav >= config_boss['min_nav']):
                 return True
         return True
     else:
@@ -474,6 +474,16 @@ def herosFullWorkIni():
                 findTelaXY(go_remove_nav,True,False,0,0,False,True,0.90)
                 time.sleep(0.5)
                 cont = cont + 1
+        else:
+            if(contnav == 15):
+                print('TOTAL DE NAVES SELECIONADAS --> '+ str(contnav)+'  ÀS {} '.format(horarioexato()))
+                findTelaXY(go_ini_boss, True)
+                time.sleep(0.5)
+                findTelaXY(go_ini_boss, False, True)
+                time.sleep(0.5)
+                pyautogui.click()
+                c_time_loop['nav_full_work'] = temp_time_nav
+                return True
         #return False
         print('ESTAMOS NA TELA PRINCIPAL - VAMOS VERIFICAR AS NAVES - MIN 50% DE POWER')
         find = go_select_nav  # ListFind, 100, 23,
@@ -498,7 +508,7 @@ def herosFullWorkIni():
                     break
             #########SE ACHOU AS 15, ENTRA PRA TRABALHAR#######
             time.sleep(1)
-            if(contnav >= config_boss['min_nav'] and contnav <= config_boss['max_nav']):
+            if(contnav >= config_boss['min_nav']):
                 print('TOTAL DE NAVES SELECIONADAS --> '+ str(contnav)+'  ÀS {} '.format(horarioexato()))
                 findTelaXY(go_ini_boss, True)
                 time.sleep(0.5)
@@ -514,7 +524,7 @@ def herosFullWorkIni():
                 findBoxImgPoints(go_ini_boss, -385, -55, 240, 213, listFind, 0, 0, True, True, 0, 0, 0, -210)  # 50%
                 CheckErroConfirm()
                 #AQUI, AS NAVES ESTÃO TRABALHANDO EM 5S
-                if(contnav >= config_boss['min_nav'] and contnav <= config_boss['max_nav']):
+                if(contnav >= config_boss['min_nav']):
                     print('TOTAL DE NAVES SELECIONADAS --> '+ str(contnav)+'  ÀS {} '.format(horarioexato()))
                     findTelaXY(go_ini_boss, True)
                     time.sleep(0.5)
