@@ -384,6 +384,8 @@ def CheckLogin():
             while cont < 5 and findTelaXY(go_asinar) == False:
                 time.sleep(2)
                 cont = cont + 1
+                if(cont == 60):
+                    break
 
         if(findTelaXY(go_asinar)):
             print('CLICANDO NO BOTÃO ASSINAR, AGUARDE UM MOMENTO')
@@ -398,6 +400,8 @@ def CheckLogin():
             while cont < 5 and findTelaXY(go_play) == False:
                 time.sleep(2)
                 cont = cont + 1
+                if(cont == 60):
+                    break
 
         if (findTelaXY(go_play)):
             print('CLICANDO NO BOTÃO PLAY, AGUARDE UM MOMENTO')
@@ -409,6 +413,8 @@ def CheckLogin():
             while cont < 5 and findTelaXY(go_ini_boss) == False:
                 time.sleep(2)
                 cont = cont + 1
+                if(cont == 60):
+                    break
 
             time.sleep(3)
             herosFullWorkIni()
@@ -435,6 +441,9 @@ def herosFullWorkIni():
         while cont < 20 and findTelaXY(go_ini_boss) == False:
             time.sleep(1)
             cont = cont + 1
+            if(cont == 120):
+                break
+            
 
         if (findTelaXY(go_ini_boss) == False):
             CheckErroConfirm()
