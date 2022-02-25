@@ -10,24 +10,29 @@ import yaml
 if __name__ == '__main__': 
     stream = open("config.yaml", 'r')# LÊ AS CONNFIGURAÇÕES O ARQUIVO
     config = yaml.safe_load(stream)
-    c_time_loop = config['time_intervals']
-    c_time_work_map = config['time_work_mapa']
-    c_time_zoom = config['zoom_nav_bomber']
-    select_bomber_tp = config['select_bomber_tp']
-    #contnav = 0
     
+    c_time_loop = config['time_intervals']
+    temp_time_nav = c_time_loop['nav_full_work']
+
+    c_time_zoom = config['zoom_nav_bomber']
+    select_nav_tp = config['select_nav_tp']
+    config_boss = config['config_boss']
+    #go_7_nav
+    #if(config_boss[''])
+    #if(findTelaXY(go_7_nav,False,False,0,0,False,False,0.96)
+
+    c_time_work_fight = config['time_work_fight']#UPDATE FUTURO
+    #global contnav = 0
     if(c_time_zoom['zoom_33']):
         print('OBS: ZOOM NAVEGADOR DE TODAS AS CONTAS DEVE ESTAR EM --> 33%')
         past_name = '33'
-
-    if(c_time_zoom['zoom_50']):
+    elif(c_time_zoom['zoom_50']):
         print('OBS: ZOOM NAVEGADOR DE TODAS AS CONTAS DEVE ESTAR EM --> 50%')
         past_name = '50'
-
-    if (c_time_zoom['zoom_100']):
+    elif (c_time_zoom['zoom_100']):
         print('OBS: ZOOM NAVEGADOR DE TODAS AS CONTAS DEVE ESTAR EM --> 50%')
         past_name = '100'
-
+    #ENTRADA CONECTE - ASSINATURA - LOGIN
     go_conect= cv2.imread('targets/new'+past_name+'/ini_jogo/conect_1.png')#OK
     go_asinar = cv2.imread('targets/new'+past_name+'/ini_jogo/assinar_1.png')#OK
     go_asinar_full = cv2.imread('targets/new'+past_name+'/ini_jogo/assinar_11.png')#OK
@@ -41,6 +46,27 @@ if __name__ == '__main__':
     go_ini_boss = cv2.imread('targets/new'+past_name+'/ini_nav/fight_boss_1.png')#OK
     go_select_nav = cv2.imread('targets/new' + past_name + '/ini_nav/fight_1.png')  # OK
 
+    chk_map_0_nav_boss = cv2.imread('targets/new' + past_name + '/ini_nav/map_0_nav_boss.png')  # OK
+
+    boss_surrender_bt = cv2.imread('targets/new'+past_name+'/ini_nav/boss/surrender/surrender.png')
+    boss_surrender_confirm = cv2.imread('targets/new'+past_name+'/ini_nav/boss/surrender/confirm_surrender.png')
+
+    boss_1_surrend = cv2.imread('targets/new'+past_name+'/ini_nav/boss/boss1.png')
+    boss_2_surrend = cv2.imread('targets/new'+past_name+'/ini_nav/boss/boss2.png')
+    boss_3_surrend = cv2.imread('targets/new'+past_name+'/ini_nav/boss/boss3.png')
+    boss_4_surrend = cv2.imread('targets/new'+past_name+'/ini_nav/boss/boss4.png')
+    boss_5_surrend = cv2.imread('targets/new'+past_name+'/ini_nav/boss/boss5.png')
+    boss_6_surrend = cv2.imread('targets/new'+past_name+'/ini_nav/boss/boss6.png')
+    boss_7_surrend = cv2.imread('targets/new'+past_name+'/ini_nav/boss/boss7.png')
+    boss_8_surrend = cv2.imread('targets/new'+past_name+'/ini_nav/boss/boss8.png')
+    boss_9_surrend = cv2.imread('targets/new'+past_name+'/ini_nav/boss/boss9.png')
+    boss_10_surrend = cv2.imread('targets/new'+past_name+'/ini_nav/boss/boss10.png')
+    boss_11_surrend = cv2.imread('targets/new'+past_name+'/ini_nav/boss/boss11.png')
+    boss_12_surrend = cv2.imread('targets/new'+past_name+'/ini_nav/boss/boss12.png')
+    boss_13_surrend = cv2.imread('targets/new'+past_name+'/ini_nav/boss/boss13.png')
+
+    #GO - QTD NAV:
+    go_7_nav = cv2.imread('targets/new' + past_name + '/ini_nav/qtd_select_nav/go_7_select_nav.png')  # OK
     go_8_nav = cv2.imread('targets/new' + past_name + '/ini_nav/qtd_select_nav/go_8_select_nav.png')  # OK
     go_9_nav = cv2.imread('targets/new' + past_name + '/ini_nav/qtd_select_nav/go_9_select_nav.png')  # OK
     go_10_nav = cv2.imread('targets/new' + past_name + '/ini_nav/qtd_select_nav/go_10_select_nav.png')  # OK
@@ -49,9 +75,6 @@ if __name__ == '__main__':
     go_13_nav = cv2.imread('targets/new' + past_name + '/ini_nav/qtd_select_nav/go_13_select_nav.png')  # OK
     go_14_nav = cv2.imread('targets/new' + past_name + '/ini_nav/qtd_select_nav/go_14_select_nav.png')  # OK
     go_15_nav = cv2.imread('targets/new' + past_name + '/ini_nav/qtd_select_nav/go_15_select_nav.png')  # OK
-    
-    chk_map_0_nav_boss = cv2.imread('targets/new' + past_name + '/ini_nav/map_0_nav_boss.png')  # OK
-    
     
     go_back_nav = cv2.imread('targets/new' + past_name + '/ini_nav/back_nav_bt_1.png')  # OK
     go_base_nav = cv2.imread('targets/new' + past_name + '/ini_nav/base.nav.png')  # OK
@@ -69,7 +92,7 @@ if __name__ == '__main__':
     erro_confirm_lose_bt = cv2.imread('targets/new'+past_name+'/erro/erro_confirm_lose_1.png')#OK
     erro_confirm_boss = cv2.imread('targets/new' + past_name + '/erro/chk_confirm_1.png')  # OK
 
-###########################SCREEM TELA & BOX########################################
+########################### SCREEM TELA & BOX ########################################
 def printScreenTela():
     with mss.mss() as sct:
         monitor = {"top": 160, "left": 160, "width": 1000, "height": 135}
@@ -81,7 +104,7 @@ def printScreenBox(x,y,w,h):
         monitor = {"top": y, "left": x, "width": w, "height": h}
         sct_img = numpy.array(sct.grab(monitor))
         return sct_img[:,:,:3]
-#################################VERSÃO 2022###########################################
+
 def findElementosScreen(screen,find_in_inscreen, threshold=0.80, debug_mode='rectangles'):
     result = cv2.matchTemplate(screen, find_in_inscreen, cv2.TM_CCOEFF_NORMED)
     #Pega os valores max_val -> % de acerto na Busca, Max_loc --> coordenada X,Y encontrada
@@ -196,12 +219,17 @@ def findTelaXY(find_in_inscreen,onclicked= False,doubleclick = False,addX = 0,ad
         return True
     else:
         return False
+
+
+#################################VERSÃO 2022###########################################
 #SELEÇÃO DAS COORDENADAS PRINCIPAIS DE TODAS AS TELAS. #COORD_INI/#COORD_CENTRO/#COORD_FIM
 def findBoxImgPoints(findImgRef, refaddX, refaddY,w,h,findListImgInRef,listaddX = 0,listaddY = 0,onclicked = False,
 movPoint = False,movPointIniaddX = 0, movPointIniaddY = 0, movPointEndaddX = 0, movPointEndaddY = 0,qtdRepeatChk = 1,ListUni = False, select_full = False): #BUSCA TODOS AS BOX COM PONTOS CARACTERÍSTICOS
     #SELEÇÃO DAS COORDENADAS PRINCIPAIS DE TODAS AS TELAS.
+    qtdRepeatChk = config_boss['qtd_rolagem_selectnav']
+
     piniref,pcenter1,pendref = coordTelaXY(findImgRef)#PEGA APENAS AS COORDENADAS TOP=LEFT X/Y
-    #LOOP PRINCIPAL - BOMBCRYPTO A QUAL GERENCIA TODAS AS TELAS - BOX
+    #LOOP PRINCIPAL -  A QUAL GERENCIA TODAS AS TELAS - BOX
     if(len(piniref)>0):
         cont1 = 1 #contador da imagem
         for (piniref,pendref) in zip(piniref,pendref):
@@ -211,16 +239,16 @@ movPoint = False,movPointIniaddX = 0, movPointIniaddY = 0, movPointEndaddX = 0, 
 
                 #CHECK FULL - LIMIT BUSCAR
                 #print(str(qtdRepeatChk)+' == '+str(contRepeatMovLoop))
-                if (findTelaXY(go_15_nav,False,False,0,0,False,False,0.97) or contRepeatMovLoop == qtdRepeatChk):
+                #if (findTelaXY(go_15_nav,False,False,0,0,False,False,0.97) or contRepeatMovLoop == qtdRepeatChk):
                     #print('Possível, temos 15 Naves pra trabalhar - FIGHT BOSS!')
-                    findTelaXY(go_ini_boss, True)
-                    time.sleep(1)
-                    findTelaXY(go_ini_boss, False, True)
-                    time.sleep(1)
-                    pyautogui.click()
+                    #findTelaXY(go_ini_boss, True)
+                #    time.sleep(1)
+                    #findTelaXY(go_ini_boss, False, True)
+                #    time.sleep(1)
+                #    pyautogui.click()
             
-                    CheckErroConfirm()
-                    break
+                 #   CheckErroConfirm()
+                 #   break
                 
                 #################################
                 (xi,yi) = pendref
@@ -267,7 +295,7 @@ movPoint = False,movPointIniaddX = 0, movPointIniaddY = 0, movPointEndaddX = 0, 
                                     print ('QTD DE NAVE ATUAL --> '+str(contnav))
                                     time.sleep(0.5)
                                     cont = cont + 1
-                                    if(findTelaXY(go_15_nav,False,False,0,0,False,False,0.97)):
+                                    if(contnav == config_boss['max_nav']):
                                         break
                                 #########SE ACHOU AS 15, ENTRA PRA TRABALHAR#######
                                 #pyautogui.moveTo(x+map_x+listaddX+movPointEndaddX,y+map_y+listaddY+movPointEndaddY,0.2)
@@ -297,7 +325,8 @@ movPoint = False,movPointIniaddX = 0, movPointIniaddY = 0, movPointEndaddX = 0, 
                     ##SÓ PARA DAR UM CLICK NO MEIO DA LISTA DE HEROES
                 contRepeatMovLoop = contRepeatMovLoop + 1
             time.sleep(1)
-            if(findTelaXY(go_15_nav,False,False,0,0,False,False,0.97)):
+            contnav
+            if(contnav >= config_boss['min_nav'] and contnav <= config_boss['max_nav']):
                 return True
         return True
     else:
@@ -348,7 +377,7 @@ def CheckLogin():
             print('ENCONTRADO BOTÃO CONECT...')
             time.sleep(1)
             print('CLICANDO NO BOTÃO CONECT, AGUARDE UM MOMENTO')
-            findTelaXY(go_conect, True)
+            findTelaXY(go_conect, False,True)
 
             print('AGUARDANDO BOTÃO ASSINAR...')
             cont = 0
@@ -359,7 +388,7 @@ def CheckLogin():
         if(findTelaXY(go_asinar)):
             print('CLICANDO NO BOTÃO ASSINAR, AGUARDE UM MOMENTO')
 
-            findTelaXY(go_asinar, True)
+            findTelaXY(go_asinar, False, True)
             time.sleep(1)
             findTelaXY(go_asinar_full, True, True, 110, 340)
 
@@ -372,7 +401,7 @@ def CheckLogin():
 
         if (findTelaXY(go_play)):
             print('CLICANDO NO BOTÃO PLAY, AGUARDE UM MOMENTO')
-            findTelaXY(go_play, True)
+            findTelaXY(go_play, False, True)
 
             print('AGUARDANDO TELA INICIAL...')
 
@@ -381,13 +410,11 @@ def CheckLogin():
                 time.sleep(2)
                 cont = cont + 1
 
-            time.sleep(5)
+            time.sleep(3)
             herosFullWorkIni()
-        
         return False
 ##########################################################################################
 def herosFullWorkIni():
-    c_time_loop['time_reboot_bot'] = 200
     CheckErroConfirm()
 
     if(findTelaXY(go_conect) or findTelaXY(go_asinar) or findTelaXY(go_play)):
@@ -396,6 +423,7 @@ def herosFullWorkIni():
         return False
 
     if (findTelaXY(go_ini_boss) == False):
+        checkSurrend()
         CheckErroConfirm()
         findTelaXY(go_back_nav,True)
         time.sleep(10)
@@ -421,6 +449,12 @@ def herosFullWorkIni():
         updateStamina()
         global contnav
         contnav = 0
+        if(findTelaXY(go_7_nav,False,False,0,0,False,False,0.96)):
+            contnav = 7
+        if(findTelaXY(go_8_nav,False,False,0,0,False,False,0.96)):
+            contnav = 8
+        if(findTelaXY(go_9_nav,False,False,0,0,False,False,0.96)):
+            contnav = 9
         if(findTelaXY(go_10_nav,False,False,0,0,False,False,0.96)):
             contnav = 10
         elif(findTelaXY(go_11_nav,False,False,0,0,False,False,0.96)):
@@ -431,12 +465,17 @@ def herosFullWorkIni():
             contnav = 13
         elif(findTelaXY(go_14_nav,False,False,0,0,False,False,0.96)):
             contnav = 14
-        elif(findTelaXY(go_15_nav,False,False,0,0,False,False,0.97)):
+        elif(findTelaXY(go_15_nav,False,False,0,0,False,False,0.96)):
             contnav = 15
-        print ('INICIO EM QTD DE NAVES '+str(contnav))
-
+        print ('INICIO EM QTD DE NAVES --> '+str(contnav))
+        if(contnav == 0):
+            cont = 0
+            while(cont < 7 and findTelaXY(go_remove_nav,True,False,0,0,False,True,0.90)):
+                findTelaXY(go_remove_nav,True,False,0,0,False,True,0.90)
+                time.sleep(0.5)
+                cont = cont + 1
         #return False
-        print('ESTAMOS NA TELA PRINCIPAL - VAMOS VERIFICAR AS NAVES - MIN 50%')
+        print('ESTAMOS NA TELA PRINCIPAL - VAMOS VERIFICAR AS NAVES - MIN 50% DE POWER')
         find = go_select_nav  # ListFind, 100, 23,
         #find = go_selecfull60_nav  # ListFind, 90, 23,
         #find = go_selecfull70_nav #ListFind, 80, 23,
@@ -446,117 +485,70 @@ def herosFullWorkIni():
         listFind = [find]
 
         ###################FAZ A BUSCA 01 DA NAVES
-        cont = 0
-        while(cont < 15 and findTelaXY(find)):
-            findTelaXY(find,True,False,0,0,False,True,0.90)
-            contnav = contnav + 1
-            print ('QTD DE NAVE ATUAL --> '+str(contnav))
-            time.sleep(0.5)
-            cont = cont + 1
-            if(findTelaXY(go_15_nav,False,False,0,0,False,False,0.97)):
-                break
-        #########SE ACHOU AS 15, ENTRA PRA TRABALHAR#######
-        time.sleep(0.5)
-        if(findTelaXY(go_15_nav,False,False,0,0,False,False,0.97) ):
-            c_time_loop['hero_full_work'] = 8
-            print('TOTAL NAVES SELEC '+ str(contnav))
-            print('JÁ TEMOS 15 NAVES, VAMOS COLOCAR PRA TRABALHAR ÀS {} '.format(horarioexato()))
-            findTelaXY(go_ini_boss, True)
-            time.sleep(0.5)
-            findTelaXY(go_ini_boss, False, True)
-            time.sleep(0.5)
-            pyautogui.click()
-            return True
-        #########SAI DO LOOP#######
-        #SE NÃO ACHOU AS 15, TENTA BUSCAR NO SCROLL
-        findBoxImgPoints(go_ini_boss, -385, -55, 240, 213, listFind, 0, 0, True, True, 0, 0, 0, -210, 4, False,True)  # 50%
-        CheckErroConfirm()
-        #AQUI, AS NAVES ESTÃO TRABALHANDO EM 5S
-        time.sleep(5)
-        CheckErroConfirm()
-        time.sleep(0.5)
+        contchk = 1
+        while contchk <= 2:
+            cont = 0
+            while(cont < 15 and findTelaXY(find)):
+                findTelaXY(find,True,False,0,0,False,True,0.90)
+                contnav = contnav + 1
+                print ('QTD DE NAVE ATUAL --> '+str(contnav))
+                time.sleep(0.5)
+                cont = cont + 1
+                if(contnav == config_boss['max_nav']):
+                    break
+            #########SE ACHOU AS 15, ENTRA PRA TRABALHAR#######
+            time.sleep(1)
+            if(contnav >= config_boss['min_nav'] and contnav <= config_boss['max_nav']):
+                print('TOTAL DE NAVES SELECIONADAS --> '+ str(contnav)+'  ÀS {} '.format(horarioexato()))
+                findTelaXY(go_ini_boss, True)
+                time.sleep(0.5)
+                findTelaXY(go_ini_boss, False, True)
+                time.sleep(0.5)
+                pyautogui.click()
+                c_time_loop['nav_full_work'] = temp_time_nav
+                return True
+            else:
+                updateStamina()
+                #########SAI DO LOOP#######
+                #SE NÃO ACHOU AS 15, TENTA BUSCAR NO SCROLL
+                findBoxImgPoints(go_ini_boss, -385, -55, 240, 213, listFind, 0, 0, True, True, 0, 0, 0, -210)  # 50%
+                CheckErroConfirm()
+                #AQUI, AS NAVES ESTÃO TRABALHANDO EM 5S
+                if(contnav >= config_boss['min_nav'] and contnav <= config_boss['max_nav']):
+                    print('TOTAL DE NAVES SELECIONADAS --> '+ str(contnav)+'  ÀS {} '.format(horarioexato()))
+                    findTelaXY(go_ini_boss, True)
+                    time.sleep(0.5)
+                    findTelaXY(go_ini_boss, False, True)
+                    time.sleep(0.5)
+                    pyautogui.click()
+                    c_time_loop['nav_full_work'] = temp_time_nav
+                    return True
+                else:
+                    contchk = contchk + 1
+                    print('IREMOS VERIFICAR MAIS UMA VEZ AS NAVES - MIN 50% - AGUARDANDO TELA PRINCIPAL')
+
+        #SE CHEGOU AQUI, TEM MENOS QUE MENOS QUE A QTD MÍNIMA DE NAVES
+        contnav = 0
+        print('TEMOS MENOS QUE O MÍNIMO DE '+str(config_boss['min_nav'])+' NAVES')
+        print('VAMOS DESATIVAR TODAS AS NAVES. AGUARDE -'+str(2*c_time_loop['nav_full_work'])+' MINUTOS ÀS {} '.format(horarioexato()))
+        c_time_loop['nav_full_work'] = 2*temp_time_nav
         findTelaXY(go_back_nav,True)
         time.sleep(0.5)
         findTelaXY(go_back_nav, False,True)
         CheckErroConfirm()
-        
-        print('IREMOS VERIFICAR MAIS UMA VEZ AS NAVES - MIN 50% - AGUARDANDO TELA PRINCIPAL')
-        #CHECK TELA PRINCIPAL
-        cont = 0
+
+        cont = 1
         while cont < 5 and findTelaXY(go_ini_boss) == False:
             time.sleep(2)
             cont = cont + 1
-
-        ###################FAZ A BUSCA 02 DA NAVES
         cont = 0
-        while(cont < 15 and findTelaXY(find)):
-            findTelaXY(find,True,False,0,0,False,True,0.90)
-            contnav = contnav + 1
-            print ('QTD DE NAVE ATUAL --> '+str(contnav))
+        while(cont < 7 and findTelaXY(go_remove_nav,True,False,0,0,False,True,0.90)):
+            findTelaXY(go_remove_nav,True,False,0,0,False,True,0.90)
             time.sleep(0.5)
             cont = cont + 1
-            if(findTelaXY(go_15_nav,False,False,0,0,False,False,0.97)):
-                break
-        
-        time.sleep(0.5)
-        if(findTelaXY(go_15_nav,False,False,0,0,False,False,0.97)):
-            c_time_loop['hero_full_work'] = 8
-            print('TOTAL NAVES SELEC'+ str(contnav))
-            print('JÁ TEMOS 15 NAVES, VAMOS COLOCAR PRA TRABALHAR ÀS {} '.format(horarioexato()))
-            findTelaXY(go_ini_boss, True)
-            time.sleep(0.5)
-            findTelaXY(go_ini_boss, False, True)
-            time.sleep(0.5)
-            pyautogui.click()
-            CheckErroConfirm()
-            return True
-        #SE NÃO ACHOU AS 15, TENTA BUSCAR NO SCROLL
-        ################################################################
-        findBoxImgPoints(go_ini_boss, -385, -55, 240, 213, listFind, 0, 0, True, True, 0, 0, 0, -210, 4, False,True)  # 50%
-        ################################################################
-        CheckErroConfirm()
-        time.sleep(5)
-        
-        findTelaXY(go_back_nav,True)
-        time.sleep(0.5)
-        findTelaXY(go_back_nav, False,True)
-        CheckErroConfirm()
-        #ULTIMA VERIFICAÇÃO PARA SABER SE TEM NAVES SUFICIENTES 
-        time.sleep(2)
-        if(findTelaXY(go_10_nav,False,False,0,0,False,False,0.96) or findTelaXY(go_11_nav,False,False,0,0,False,False,0.96) or
-        findTelaXY(go_12_nav,False,False,0,0,False,False,0.96) or findTelaXY(go_13_nav,False,False,0,0,False,False,0.96) or
-        findTelaXY(go_14_nav,False,False,0,0,False,False,0.96) or contnav > 9):
-            c_time_loop['hero_full_work'] = 8
+        # c_time_loop['time_refresh_position']
 
-            print('TEMOS ENTRE 10 E 15 NAVES - VAMOS COLOCARP PRA TRABALHAR ÀS {} '.format(horarioexato()))
-            findTelaXY(go_ini_boss, True)
-            time.sleep(0.5)
-            findTelaXY(go_ini_boss, False, True)
-            time.sleep(0.5)
-            pyautogui.click()
-            CheckErroConfirm()
-            return True
-        else:
-            c_time_loop['time_reboot_bot'] = 19  
-            c_time_loop['hero_full_work'] = 30
-            print('TEMOS MENOS QUE 10 NAVES VAMOS DESATIVAR TODAS E AGUARDE - 30 MINUTOS ÀS {} '.format(horarioexato()))
-
-            findTelaXY(go_back_nav,True)
-            time.sleep(0.5)
-            findTelaXY(go_back_nav, False,True)
-            CheckErroConfirm()
-
-            cont = 1
-            while cont < 5 and findTelaXY(go_ini_boss) == False:
-                time.sleep(2)
-                cont = cont + 1
-            cont = 0
-            while(cont < 9 and findTelaXY(go_remove_nav,True,False,0,0,False,True,0.90)):
-                findTelaXY(go_remove_nav,True,False,0,0,False,True,0.90)
-                time.sleep(0.5)
-                cont = cont + 1
-            # c_time_loop['time_refresh_position']
-        return True
+        return False
     else:
         return False
     #findBoxScrollImg(go_ini_boss, -650, -405, 397, 339, go_selecfull80_nav, 130, 42, True, True, 0, -150, -45, -45, 9)
@@ -565,11 +557,48 @@ def updateStamina():
     if (findTelaXY(go_ini_boss)):
         findTelaXY(go_base_nav,True)
         time.sleep(1)
-        findTelaXY(go_base_nav, False,True)
-        time.sleep(5)
         findTelaXY(go_back_nav,True)
         time.sleep(1)
+        findTelaXY(go_base_nav, False,True)
+        time.sleep(1)
         findTelaXY(go_back_nav, False,True)
+
+def checkSurrend():
+    print('VAMOS FAZER DO SURRENDER 10...')   
+    time.sleep(2)
+    findTelaXY(boss_surrender_bt,True,True,0,0,False,False,0.80)
+    time.sleep(2)
+    findTelaXY(boss_surrender_confirm,True,True,0,0,False,False,0.80)
+    time.sleep(5)
+    return
+    if(findTelaXY(boss_1_surrend,False,False,0,0,False,False,0.80)):
+        print('CONFIRMAÇÃO DO SURRENDER 01...')    
+    if(findTelaXY(boss_2_surrend,False,False,0,0,False,False,0.80)):
+        print('CONFIRMAÇÃO DO SURRENDER 02...')    
+    if(findTelaXY(boss_3_surrend,False,False,0,0,False,False,0.80)):
+        print('CONFIRMAÇÃO DO SURRENDER 03...')    
+    if(findTelaXY(boss_4_surrend,False,False,0,0,False,False,0.80)):
+        print('CONFIRMAÇÃO DO SURRENDER 04...')    
+    if(findTelaXY(boss_5_surrend,False,False,0,0,False,False,0.80)):
+        print('CONFIRMAÇÃO DO SURRENDER 05...')    
+    if(findTelaXY(boss_6_surrend,False,False,0,0,False,False,0.80)):
+        print('CONFIRMAÇÃO DO SURRENDER 06...')    
+    if(findTelaXY(boss_7_surrend,False,False,0,0,False,False,0.80)):
+        print('CONFIRMAÇÃO DO SURRENDER 07...')    
+    if(findTelaXY(boss_8_surrend,False,False,0,0,False,False,0.80)):
+        print('CONFIRMAÇÃO DO SURRENDER 08...')    
+    if(findTelaXY(boss_9_surrend,False,False,0,0,False,False,0.80)):
+        print('CONFIRMAÇÃO DO SURRENDER 09...')    
+    if(findTelaXY(boss_10_surrend,False,False,0,0,False,False,0.80)):
+        print('VAMOS FAZER DO SURRENDER 10...')   
+        time.sleep(2)
+        findTelaXY(boss_surrender_bt,True,True,0,0,False,False,0.80)
+        time.sleep(2)
+        findTelaXY(boss_surrender_confirm,True,True,0,0,False,False,0.80)
+
+    if(findTelaXY(boss_11_surrend,False,False,0,0,False,False,0.80)):
+        print('VAMOS FAZER DO SURRENDER 11...')    
+        
 #######################################################################################
 def sleepTime(qtdseg = 1, info_msg = '', newline = False):
     #sys.stdout.write('Será necessário aguardar '+str(y)+'s')
@@ -592,19 +621,26 @@ def main():
         #4° pip install mss
         #5° pip install yaml2 pip install PyYAML
     #print('Kdu')
+    #CheckLogin()
+    #herosFullWorkIni()
+    #if(findTelaXY(boss_1)):
+    #    time.sleep(3)
+    #    findTelaXY(boss_surrender_bt,False,True)
+    #    time.sleep(3)
+    #    findTelaXY(boss_surrender_bt,False,True)
     
+    #return 
  ###########################AMBIENTE DE TESTE########################################
     while True:
-        print('SE GOSTOU DO BOOT DO BOMB - FIQUE A VONTADE PARA PASSAR UM CAFE/SPG/SPE :)')
+        print('SE GOSTOU DO BOOT DO SPACECRYPTO - FIQUE A VONTADE PARA PASSAR UM CAFÉ - BUSD/BNB :)')
         print('CARTEIRA WALET: 0xAc8b000865BdBcD6C4eD4Ac85475Afd57DD2244D \n')
-
         print('BOT SPACECRYPTO 2022 - INICIAL NO SISTEMA. Aguarde 3s...')
         time.sleep(3)
         t_cont = {
             "check_bt_login" : 0,#ok CHEK ERRO - LOGIN ETC
             "time_refresh_position" : 0, #ok ATUALIZAR MAPA SAIR E VOLTAR
-            "hero_comum_work" : 0,"hero_raro_work" : 0,"hero_sraro_work" : 0,
-            "hero_epico_work" : 0,"hero_full_work" : 0,"time_reboot_bot": 0
+            "nav_comum_work" : 0,"nav_raro_work" : 0,"nav_sraro_work" : 0,
+            "nav_epico_work" : 0,"nav_mitica_work" : 0,"nav_full_work" : 0,"time_surrend_bot": 0
         }
 
         t_work_map = {
@@ -614,9 +650,9 @@ def main():
 
         now_loop = time.time() #INICIO DO PRIMEIRO LOOP PRINCIPAL
 
-        t_cont['hero_comum_work'] = now_loop
-        t_cont['hero_raro_work'] = t_cont['hero_sraro_work'] = now_loop
-        t_cont['hero_epico_work'] = now_loop #PRA NÃO ENTRAR A PRIMEIRA VEZ UMA VEZ
+        t_cont['nav_comum_work'] = now_loop
+        t_cont['nav_raro_work'] = t_cont['nav_sraro_work'] = now_loop
+        t_cont['nav_epico_work'] = now_loop #PRA NÃO ENTRAR A PRIMEIRA VEZ UMA VEZ
 
         ###################################INICIADO O LOOP PRINCIPAL###################################
         while True:
@@ -628,47 +664,40 @@ def main():
                 CheckLogin()
                 t_cont['check_bt_login'] = now
 
-            if (now - t_cont['time_reboot_bot']) > (c_time_loop['time_reboot_bot'] * 60):
+            if (now - t_cont['time_surrend_bot']) > (c_time_loop['time_surrend_bot'] * 60):
                 #CheckLogin()
-                updateStamina()
-
-                t_cont['time_reboot_bot'] = now      
+                #updateStamina()
+                t_cont['time_surrend_bot'] = now      
 
             #################### WORK FULL################################
-            if(select_bomber_tp['full_']):
+            if(select_nav_tp['full_']):
                 ######COLOCANDO TODOS FULL A 1° VEZ###################
-                if (now - t_cont['hero_full_work']) > (c_time_loop['hero_full_work'] * 60):
+                if (now - t_cont['nav_full_work']) > (c_time_loop['nav_full_work'] * 60):
+                    c_time_loop['nav_full_work'] = temp_time_nav
                     print('INICIANDO FULL COM TODOS AS 15 NAVES - ÀS {} '.format(horarioexato()))
                     herosFullWorkIni()
 
-                    t_cont['hero_full_work'] = now
+                    t_cont['nav_full_work'] = now
                     t_cont['time_refresh_position'] = now
-
-                    #t_work_map['now_work_hero'] = now
-                    t_work_map['time_work_hero'] = c_time_work_map['hero_full_work']
-            ##############################################################    
-            
             #################### WORK RARIDADE ################################
-            if(select_bomber_tp['raridade_']):
-                if (now - t_cont['hero_comum_work']) > (c_time_loop['hero_comum_work'] * 60):
-                    #print('INICIANDO COM OS COMUNS - ÀS {} '.format(horarioexato()))
-                    #t_cont['hero_comum_work'] = now
-                    #t_work_map['now_work_hero'] = now
-                    t_work_map['time_work_hero'] = c_time_work_map['hero_comum_work']
-
-            ##############################################################    
+            elif(select_nav_tp['raridade_']):        
+                if (now - t_cont['nav_comum_work']) > (c_time_loop['nav_comum_work'] * 60):
+                    print('INICIANDO COM OS COMUNS - ÀS {} '.format(horarioexato()))
+                    #t_cont['nav_comum_work'] = now
+                
             #################### CONDIÇÕES REFRESH ################################
             if (now - t_cont['time_refresh_position']) > (c_time_loop['time_refresh_position'] * 60):
                 #herosFullWorkIni()
                 CheckErroConfirm()
-                if(findTelaXY(chk_map_0_nav_boss,False,False,0,0,False,False,0.80)):
-                    #c_time_loop['hero_full_work'] = 5
-                    print('TEMOS  0 NAVES, VAMOS VOLTAR A TELA PRINCIPAL -  ÀS {} '.format(horarioexato()))
-                    findTelaXY(go_back_nav,True)
-                    time.sleep(1)
-                    findTelaXY(go_back_nav, False,True)
-                    CheckErroConfirm()
-                    herosFullWorkIni()
+                #checkSurrend()
+                #if(findTelaXY(chk_map_0_nav_boss,False,False,0,0,False,False,0.80)):
+                    #c_time_loop['nav_full_work'] = 5
+                    #print('TEMOS  0 NAVES, VAMOS VOLTAR A TELA PRINCIPAL -  ÀS {} '.format(horarioexato()))
+                    #findTelaXY(go_back_nav,True)
+                #    time.sleep(1)
+                    #findTelaXY(go_back_nav, False,True)
+                    #CheckErroConfirm()
+                    #herosFullWorkIni()
 
 
                 t_cont['time_refresh_position'] = now

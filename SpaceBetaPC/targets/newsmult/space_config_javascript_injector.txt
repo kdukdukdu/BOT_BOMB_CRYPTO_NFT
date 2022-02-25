@@ -1,0 +1,12 @@
+var bomb = document.getElementById('unity-canvas')
+bomb.style.minWidth="398px"
+bomb.style.maxWidth="398px"
+bomb.style.minHeight="223px"
+bomb.style.maxHeight="223px"
+var bomb = document.getElementById('bottom-task')
+bomb.style.display='none'
+var bomb = document.getElementById('unity-build-title')
+bomb.style.display='none'
+var bomb = document.getElementById('unity-fullscreen-button')
+bomb.style='background:none'
+document.querySelector('footer').style = 'display: none'

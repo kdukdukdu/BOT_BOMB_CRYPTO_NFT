@@ -1,24 +1,30 @@
 ---
+  config_boss:
+    min_nav: 10 #MINI - 7 E MAX 15
+    max_nav: 15 #
+    qtd_rolagem_selectnav: 5
+    surrender: 10 #EM DESENVOLVIMENTO
   time_intervals:
+    nav_full_work: 8 #min A CADA X MINUTOS COLOCA TODOS OS BOMBER-HEROS PRA TRABALHAR
     check_bt_login: 0.2 #min - VERIFICAR SE PRECISA FAZER LOGIN
-    time_refresh_position: 0.2 #min ATUALIZAÇÃO SAIR E ENTRAR EM TODOS OS MAPAS
-    hero_full_work: 8 #min A CADA X MINUTOS COLOCA TODOS OS BOMBER-HEROS PRA TRABALHAR
-    hero_comum_work: 50 #min A CADA X MINUTOS COLOCA TODOS OS BOMBER-HEROS PRA TRABALHAR
-    hero_raro_work: 70 #min A CADA X MINUTOS COLOCA TODOS OS BOMBER-HEROS PRA TRABALHAR
-    hero_sraro_work: 90 #min A CADA X MINUTOS COLOCA TODOS OS BOMBER-HEROS PRA TRABALHAR
-    hero_epico_work: 110 #min A CADA X MINUTOS COLOCA TODOS OS BOMBER-HEROS PRA TRABALHAR
-    time_reboot_bot: 200 #min A CADA X MINUTOS REINICIA TODAS AS CONTAS - REBOOT GERAL
-  time_work_mapa: 
-    hero_full_work: 40 #AQUI SERA DEFINIDO QUANTO TEMPO O BOMBER-HERO IRA TRABALHAR ATÉ COLOCA-LOS PARA DESCANSAR
-    hero_comum_work: 20
-    hero_raro_work: 15 
-    hero_sraro_work: 10
-    hero_epico_work: 8
+    time_refresh_position: 0.1 #min USADO PARA VERIFICAÇÃO DE ERROS - BOTÃO OK E CONFIRM
+    time_surrend_bot: 2000 #EM DESENVOLVIMENTO
+    nav_comum_work: 0 # UPDATE FUTURO :)
+    nav_raro_work: 0  # UPDATE FUTURO :)
+    nav_sraro_work: 0 # UPDATE FUTURO :)
+    nav_epico_work: 0 # UPDATE FUTURO :)
+    nav_mitic_work: 0 # UPDATE FUTURO :)
+  time_work_fight: 
+    nav_full_work: 0 # UPDATE FUTURO :)
+    nav_comum_work: 0 # UPDATE FUTURO :)
+    nav_raro_work: 0  # UPDATE FUTURO :)
+    nav_sraro_work: 0 # UPDATE FUTURO :)
+    nav_epico_work: 0 # UPDATE FUTURO :)
   zoom_nav_bomber: 
     zoom_33: True  #TRUE  ATIVO
     zoom_50: False #FALSE - INATIVO
     zoom_100: False #FALSE - INATIVO
-  select_bomber_tp:
+  select_nav_tp:
     full_: True
     raridade_: False
 #AQUI SERA DEFINIDO QUAL A ZOOM DO NAVEGADOR NAS CONTAS 33% OU 50%
