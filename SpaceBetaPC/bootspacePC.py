@@ -638,7 +638,8 @@ def main():
         #2° pip install matplotlib
         #3° pip install PyAutoGUI
         #4° pip install mss
-        #5° pip install yaml2 pip install PyYAML
+        #5° pip install yaml2 
+        #6° pip install PyYAML
     #print('Kdu')
     #CheckLogin()
     #herosFullWorkIni()

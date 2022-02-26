@@ -36,7 +36,13 @@ if __name__ == '__main__':
     go_select_sign_meta3 = cv2.imread('targets/new'+past_name+'/login_assinar_meta/assinar3.png')#OK
 
     go_conect_meta = cv2.imread('targets/new'+past_name+'/login_assinar_meta/connect_meta.png')
-
+    go_conect_meta_load = cv2.imread('targets/new'+past_name+'/login_assinar_meta/conect_meta_load.png')
+    go_conect_meta_no_network = cv2.imread('targets/new'+past_name+'/login_assinar_meta/conect_meta_no_network.png')
+    go_conect_meta_click_senha1 = cv2.imread('targets/new'+past_name+'/login_assinar_meta/conect_meta_click_senha1.png')
+    go_conect_meta_click_senha2 = cv2.imread('targets/new'+past_name+'/login_assinar_meta/conect_meta_click_senha2.png')
+    go_conect_meta_click_chk1 = cv2.imread('targets/new'+past_name+'/login_assinar_meta/conect_meta_click_chk1.png')
+    go_conect_meta_click_chk2 = cv2.imread('targets/new'+past_name+'/login_assinar_meta/conect_meta_click_chk2.png')
+    
     go_map = cv2.imread('targets/new'+past_name+'/treasure-hunt-icon.png')#OK
     go_back = cv2.imread('targets/new'+past_name+'/voltar.png')#OK
     x_button = cv2.imread('targets/new'+past_name+'/x.png')#OK
@@ -110,6 +116,7 @@ def findElementosScreen(screen,find_in_inscreen, threshold=0.85, debug_mode='rec
     result = cv2.matchTemplate(screen, find_in_inscreen, cv2.TM_CCOEFF_NORMED)
     #Pega os valores max_val -> % de acerto na Busca, Max_loc --> coordenada X,Y encontrada
     min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(result)
+    print('ACERTIVIDADE '+str(max_val)+'%')
     if max_val >= threshold:
         #print('ACERTIVIDADE '+str(max_val)+'%')
         locations = numpy.where(result >= threshold)
@@ -300,97 +307,129 @@ movPoint = False,movPointIniaddX = 0, movPointIniaddY = 0, movPointEndaddX = 0, 
         return False
 ##########################################################################################
 def CheckLogin():
-    #checkXBackIniPag()
-    if(findTelaXY(erroupdate1_bt) or findTelaXY(erroupdate2_bt) or findTelaXY(erroinit_bt)):
-        findTelaXY(erroupdate1_bt,True) #ATUALIZA APÓS UPDATE - MANUTENÇÃO 1
-        findTelaXY(erroupdate2_bt,True) #ATUALIZA APÓS UPDATE - MANUTENÇÃO1
-        time.sleep(1)
-        findTelaXY(erroinit_bt,True,True,0,0,True) #ATUALIZA APÓS UPDATE - MANUTENÇÃO1
-        sleepTime(10,'ATUALIZANDO APÓS UMA POSSÍVEL MANUTENÇÃO DO JOGO')
+    while True:
+        if(findTelaXY(loaderro_bt)):
+            print('O BOMBER DEVE ESTAR EM MANUTENÇÃO - TENTAREMOS LOGIN')
+            findTelaXY(loaderro_bt,True,True,0,0,True,True) #ATUALIZA A 1° PAGINA
+            sleepTime(10,'IREMOS VERIFICAR NOVAMENTE')
+            continue
 
-    if(findTelaXY(loaderro_bt) or findTelaXY(erromemory1_bt) or findTelaXY(erromemory2_bt)):
-        print('O BOMBER DEVE ESTAR EM MANUTENÇÃO - TENTAREMOS LOGIN')
-        findTelaXY(loaderro_bt,True,True,0,0,True) #ATUALIZA A 1° PAGINA
-        findTelaXY(erromemory1_bt,True,True) #ATUALIZA A 1° PAGINA
-        time.sleep(2)
-        findTelaXY(erromemory2_bt,True,True,0,0,True) #ATUALIZA A 1° PAGINA
-        findTelaXY(erroinit_bt,True,True,0,0,True) #ATUALIZA APÓS UPDATE - MANUTENÇÃO1
+        #VERIFICANDO POSSÍVEL ERRO 01
+        if(findTelaXY(erroupdate1_bt) or findTelaXY(erroupdate2_bt) or findTelaXY(erroinit_bt)):
+            findTelaXY(erroupdate1_bt,True) #ATUALIZA APÓS UPDATE - MANUTENÇÃO 1
+            findTelaXY(erroupdate2_bt,True) #ATUALIZA APÓS UPDATE - MANUTENÇÃO1
+            time.sleep(1)
+            findTelaXY(erroinit_bt,True,True,0,0,True) #ATUALIZA APÓS UPDATE - MANUTENÇÃO1
+            sleepTime(10,'ATUALIZANDO APÓS UMA POSSÍVEL MANUTENÇÃO DO JOGO')
+            continue
 
-        sleepTime(10,'IREMOS VERIFICAR NOVAMENTE')
+        if(findTelaXY(loaderro_bt) or findTelaXY(erromemory1_bt) or findTelaXY(erromemory2_bt)):
+            print('O BOMBER DEVE ESTAR EM MANUTENÇÃO - TENTAREMOS LOGIN')
+            findTelaXY(loaderro_bt,True,True,0,0,True) #ATUALIZA A 1° PAGINA
+            findTelaXY(erromemory1_bt,True,True) #ATUALIZA A 1° PAGINA
+            time.sleep(2)
+            findTelaXY(erromemory2_bt,True,True,0,0,True) #ATUALIZA A 1° PAGINA
+            findTelaXY(erroinit_bt,True,True,0,0,True) #ATUALIZA APÓS UPDATE - MANUTENÇÃO1
+            sleepTime(10,'IREMOS VERIFICAR NOVAMENTE')
+            continue
 
-    while findTelaXY(go_conect2) or findTelaXY(go_conect) or findTelaXY(ok_bt) or findTelaXY(go_select_sign_meta1) or findTelaXY(go_select_sign_meta11) or findTelaXY(go_select_sign_meta2) or findTelaXY(go_select_sign_meta3) or findTelaXY(go_conect_meta): 
-        findTelaXY(go_select_sign_meta1,True,True,-50,-200)
-        findTelaXY(go_select_sign_meta11,True,True,-50,-200)
-        sleepTime(2,'VERIFICANDO POSSÍVEL CONFIRMAÇÃO DE ASSINATURA')
-        findTelaXY(go_select_sign_meta2,True)
-        findTelaXY(go_select_sign_meta3,True)
-        ############################CHECK INICIAL################################
-        if(findTelaXY(ok_bt)):
-            sleepTime(2,'ENCONTRAMOS UM BOTÃO OK/CONEXAO ÀS {} '.format(horarioexato()))
-            findTelaXY(ok_bt,True)
-            sleepTime(12,'IREMOS ATUALIZAR CADA UMA DA(S) PAGINA(S) :)')   
-        #########################################################################
-        ############################VERIFICAR SE TEM BOTÃO DE CONEXÃO WALET################################
-        if (findTelaXY(go_conect) or findTelaXY(go_conect2) or findTelaXY(go_conect_meta)):
-            updateMapaHero()
-            print('BOTÃO CONECT ENCONTRADO NA TELA! IREMOS DAR F5 ÀS {} '.format(horarioexato()))
-            contconta = 1
-
-            while(findTelaXY(go_conect) or findTelaXY(go_conect2) or findTelaXY(go_conect_meta)): #CLICA SO NO PRIMEIRO ENTRAR - SERÁ VERIFICADO UM POR UM
-                #findTelaXY(go_conect,True,True,0,-100,True,True) #ATUALIZA A 1° PAGINA
-                #findTelaXY(go_conect2,True,True,0,0,True,True) #ATUALIZA A 1° PAGINA
-
-                #sleepTime(15,'INICIANDO O LOGIN NA(S) CONTA  N° '+str(contconta)) #TEMPO CONSIDERÁVEL PARA ATUALIZAR PAGINA
-                findTelaXY(go_conect,True,True,0,0,False,True) #CLICA APENAS NA 1° PAGINA
+        #ENCONTRADO BOTÃO OK
+        if (findTelaXY(ok_bt)):
+            print('ENCONTRADO BOTÃO OK...')
+            time.sleep(1)
+            print('CLICANDO NO OK, AGUARDE UM MOMENTO')
+            findTelaXY(ok_bt, True)
+            print('AGUARDANDO BOTÃO CONECTED...')
+            cont = 0
+            while cont < 5 and (findTelaXY(go_conect)==False and findTelaXY(go_conect2)==False and findTelaXY(go_conect_meta)==False):
                 time.sleep(2)
-                findTelaXY(go_conect_meta,True,True,0,0,False,True)
-                sleepTime(15,'CLICANDO NO BOTÃO CONECTED N° '+str(contconta))#TEMPO CONSIDERÁVEL PARA ATUALIZAR PAGINA
-                #ENQUANTO TIVER A CAIXA DE CONFIRMAÇÃO METAMASK ELE FICA AQUI DENTRO TENTANDO CLICAR.
-                contx = 1
+                cont = cont + 1
+                if(cont == 60):
+                    break
+        #ENCONTRADO CONECT OK
+        if (findTelaXY(go_conect) or findTelaXY(go_conect2) or findTelaXY(go_conect_meta)):
+            print('ENCONTRADO BOTÃO CONECT...')
+            time.sleep(1)
+            print('CLICANDO NO BOTÃO CONECT, AGUARDE UM MOMENTO, ENQUANTO ATUALIZAMOS TODOS OS MAPAS')
+            updateMapaHero()
+            findTelaXY(go_conect,True,False,0,0,False,True) #CLICA APENAS NA 1° PAGINA
+            time.sleep(2)
+            findTelaXY(go_conect_meta,True,False,0,0,False,True)
 
+            print('AGUARDANDO BOTÃO ASSINAR...')
+            cont = 0
+            while cont < 8 and (findTelaXY(go_select_sign_meta1)==False and findTelaXY(go_select_sign_meta11)==False 
+            and findTelaXY(go_select_sign_meta2)==False and findTelaXY(go_select_sign_meta3)==False) :
+                time.sleep(2)
+                cont = cont + 1
+                if(cont == 30 or findTelaXY(go_conect_meta_no_network)):
+                    print('TEMPO EXCEDIDO, POSSÍVEL FOI DESLOGADO DA METAMASK. FAREMOS O LOGIN NA METAMASK')
+                    print('PARA FUNCIONAR, TERÁ QUE COLOCAR A SENHA PADRÃO NO ARQUIVO CONFIG.YAML - EM TODAS AS CONTAS DA METAMASK! FIQUE TRANQUILO')
+                    print('FIQUE TRANQUILO, NÃO IREMOS ROUBAR NENHUM VALOR DA SUA CARTEIRA METAMASK :)')
+                    time.sleep(1)
+                    if(findTelaXY(ok_bt)):
+                        findTelaXY(ok_bt, True)
+                        sleepTime(10,'IREMOS VERIFICAR NOVAMENTE')
+                        
+                    findTelaXY(go_conect_meta_click_senha1,True)
+                    time.sleep(3)
+                    findTelaXY(go_conect_meta_click_senha2,True)
+                    time.sleep(6)
+                    if(findTelaXY(go_conect_meta_click_chk2)):
+                        pyautogui.typewrite("Kadu1221@", interval=0.30) 
+                        time.sleep(1)
+                        pyautogui.hotkey('enter')
+                        time.sleep(6)
+                        if(findTelaXY(go_conect_meta_click_chk1)):
+                            findTelaXY(go_conect_meta_click_chk1,True,False,200)
+                            #depois refaz e verifica o botão confirm assinatura
+                    #if(findTelaXY(go_select_sign_meta11)):
+                        #BOTÃO ASSINAR         
+
+                    break
+            #CLICANDO NO BOTÃO ASSINAR1
+            if(findTelaXY(go_select_sign_meta2) or findTelaXY(go_select_sign_meta3)):
+                print('CLICANDO NO BOTÃO ASSINAR, AGUARDE UM MOMENTO ATÉ A TELA PRINCIPAL')
                 findTelaXY(go_select_sign_meta2,True)
                 findTelaXY(go_select_sign_meta3,True)
-                sleepTime(2)
-                while(findTelaXY(go_select_sign_meta1) or findTelaXY(go_select_sign_meta11)):
-                    print('TENTATIVA CONEXÃO '+str(contx)+'°')
-                    #sleepTime(15,'Tentativa '+str(contx)+'°')#
-                    findTelaXY(go_select_sign_meta1,True,True,-50,-200,False,True)
-                    findTelaXY(go_select_sign_meta11,True,True,-50,-200,False,True)
-                    sleepTime(2)
-                    findTelaXY(go_select_sign_meta2,True)
-                    findTelaXY(go_select_sign_meta3,True)
-                    findTelaXY(go_select_sign_meta2,True)
-                    findTelaXY(go_select_sign_meta3,True)
-                    contx = contx + 1
-
-                contchk = 0
-                while (contchk < 5):
-                    sleepTime(2,'SE TUDO TIVER CERTO, ESTAMOS ENTRANDO NA CONTA  N° '+str(contconta))
-                    
-                    contchk = contchk + 1
-                    sleepTime(3,'SÓ AGUARDAR 100% ATÉ A TELA INICIAL :) - TENTATIVA N° '+str(contchk))
-                    
-                    if(findTelaXY(go_hero_work_ini)):
-                        sleepTime(2,'INICIANDO FULL - TODOS OS HEROES - ÀS {} '.format(horarioexato()))
-                        ################APENAS SELEÇÃO ALL - HEROES#############
-                        findTelaXY(go_hero_work_ini,True)
-                        #print('COLOCANDO OS HEROS PARA TRABALHAR')
-                        time.sleep(2)
-                        findTelaXY(go_all_work,True)
-                        time.sleep(2)
-                        findTelaXY(x_button,True)
-                        print('VOLTANDO A TELA PRINCIPAL NO MAPA E ENTRANDO NO MAPA')
-                        findTelaXY(go_map,True,True,0,0,False,True)
-
+                print('AGUARDANDO A TELA PRINCIPAL DO BOMB PARA SELEÇÃO DOS HEROES...')
+                cont = 0
+                while cont < 10 and findTelaXY(go_hero_work_ini) == False:
+                    time.sleep(2)
+                    cont = cont + 1
+                    if(cont == 60):
                         break
+            elif(findTelaXY(go_select_sign_meta1) or findTelaXY(go_select_sign_meta11)):
+                print('CLICANDO NO BOTÃO ASSINAR, TELA CHEIA. AGUARDE UM MOMENTO ATÉ A TELA PRINCIPAL')
+                findTelaXY(go_select_sign_meta1,True,True,-50,-200)
+                findTelaXY(go_select_sign_meta11,True,True,-50,-200)
+                time.sleep(2)
+                findTelaXY(go_select_sign_meta2,True)
+                findTelaXY(go_select_sign_meta3,True)
+                print('AGUARDANDO A TELA PRINCIPAL DO BOMB PARA SELEÇÃO DOS HEROES...')
+                cont = 0
+                while cont < 10 and findTelaXY(go_hero_work_ini) == False:
+                    time.sleep(2)
+                    cont = cont + 1
+                    if(cont == 60):
+                        break
+        if(findTelaXY(go_hero_work_ini)):
+            sleepTime(2,'INICIANDO FULL - TODOS OS HEROES - ÀS {} '.format(horarioexato()))
+            ################APENAS SELEÇÃO ALL - HEROES#############
+            findTelaXY(go_hero_work_ini,True)
+            #print('COLOCANDO OS HEROS PARA TRABALHAR')
+            time.sleep(2)
+            findTelaXY(go_all_work,True)
+            time.sleep(2)
+            findTelaXY(x_button,True)
+            print('VOLTANDO A TELA PRINCIPAL NO MAPA E ENTRANDO NO MAPA')
+            findTelaXY(go_map,True,True,0,0,False,True)
+            
+            if (findTelaXY(go_conect) or findTelaXY(go_conect2) or findTelaXY(go_conect_meta)):
+                print('Entrei aqui')
+                continue
 
-                if(findTelaXY(loaderro_bt)):
-                    print('O BOMBER DEVE ESTAR EM MANUTENÇÃO - TENTAREMOS LOGIN')
-                    findTelaXY(loaderro_bt,True,True,0,0,True,True) #ATUALIZA A 1° PAGINA
-                    sleepTime(10,'IREMOS VERIFICAR NOVAMENTE')
-                    
-                contconta = contconta + 1
-                
+        return False              
 ##########################################################################################
 def herosFullWorkIni():
     #while True:
@@ -505,6 +544,14 @@ def horarioexato():
 def main():
     cont = 0
  ###########################AMBIENTE DE TESTE########################################   
+    #while True:
+    #findTelaXY(go_conect_meta_click_chk1,True,False,200)
+    CheckLogin()
+    #return
+
+    
+
+    return 
  ###########################AMBIENTE DE TESTE########################################
     while True:
         
