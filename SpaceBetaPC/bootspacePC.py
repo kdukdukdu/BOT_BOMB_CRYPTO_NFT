@@ -295,7 +295,7 @@ movPoint = False,movPointIniaddX = 0, movPointIniaddY = 0, movPointEndaddX = 0, 
                                     print ('QTD DE NAVE ATUAL --> '+str(contnav))
                                     time.sleep(0.5)
                                     cont = cont + 1
-                                    if(contnav == config_boss['max_nav']):
+                                    if(contnav == config_boss['max_nav'] or contnav >= 15):
                                         break
                                 #########SE ACHOU AS 15, ENTRA PRA TRABALHAR#######
                                 #pyautogui.moveTo(x+map_x+listaddX+movPointEndaddX,y+map_y+listaddY+movPointEndaddY,0.2)
@@ -326,7 +326,7 @@ movPoint = False,movPointIniaddX = 0, movPointIniaddY = 0, movPointEndaddX = 0, 
                 contRepeatMovLoop = contRepeatMovLoop + 1
             time.sleep(1)
             contnav
-            if(contnav >= config_boss['min_nav']):
+            if(contnav >= config_boss['min_nav'] or contnav >=15):
                 return True
         return True
     else:
@@ -513,7 +513,7 @@ def herosFullWorkIni():
                 print ('QTD DE NAVE ATUAL --> '+str(contnav))
                 time.sleep(0.5)
                 cont = cont + 1
-                if(contnav == config_boss['max_nav']):
+                if(contnav == config_boss['max_nav'] or contnav >= 15):
                     break
             #########SE ACHOU AS 15, ENTRA PRA TRABALHAR#######
             time.sleep(1)
