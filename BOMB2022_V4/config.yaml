@@ -1,6 +1,7 @@
 ---
   time_intervals:
-    check_bt_login: 1 #min - VERIFICAR SE PRECISA FAZER LOGIN
+    check_bt_login: 0.2 #min - VERIFICAR SE PRECISA FAZER LOGIN
+    login_senha_metamask: 'Sua Senha aqui'
     time_refresh_position: 9 #min ATUALIZAÇÃO SAIR E ENTRAR EM TODOS OS MAPAS
     hero_full_work: 120 #min A CADA X MINUTOS COLOCA TODOS OS BOMBER-HEROS PRA TRABALHAR
     hero_comum_work: 50 #min A CADA X MINUTOS COLOCA TODOS OS BOMBER-HEROS PRA TRABALHAR

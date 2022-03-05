@@ -116,7 +116,7 @@ def findElementosScreen(screen,find_in_inscreen, threshold=0.85, debug_mode='rec
     result = cv2.matchTemplate(screen, find_in_inscreen, cv2.TM_CCOEFF_NORMED)
     #Pega os valores max_val -> % de acerto na Busca, Max_loc --> coordenada X,Y encontrada
     min_val, max_val, min_loc, max_loc = cv2.minMaxLoc(result)
-    print('ACERTIVIDADE '+str(max_val)+'%')
+    #print('ACERTIVIDADE '+str(max_val)+'%')
     if max_val >= threshold:
         #print('ACERTIVIDADE '+str(max_val)+'%')
         locations = numpy.where(result >= threshold)
@@ -306,15 +306,29 @@ movPoint = False,movPointIniaddX = 0, movPointIniaddY = 0, movPointEndaddX = 0, 
     else:
         return False
 ##########################################################################################
+def heroFullWork():
+    if(findTelaXY(go_hero_work_ini)):
+        sleepTime(2,'INICIANDO FULL - APÓS LOGIN TODOS OS HEROES - ÀS {} '.format(horarioexato()))
+        ################APENAS SELEÇÃO ALL - HEROES#############
+        findTelaXY(go_hero_work_ini,True,False,0,0,False,True)
+        #print('COLOCANDO OS HEROS PARA TRABALHAR')
+        time.sleep(2)
+        findTelaXY(go_all_work,True)
+        time.sleep(2)
+        findTelaXY(x_button,True)
+        print('VOLTANDO A TELA PRINCIPAL NO MAPA E ENTRANDO NO MAPA')
+        findTelaXY(go_map,True,True,0,0,False,True)
+
 def CheckLogin():
     while True:
+        #VERIFICANDO POSSÍVEL ERRO 01
         if(findTelaXY(loaderro_bt)):
             print('O BOMBER DEVE ESTAR EM MANUTENÇÃO - TENTAREMOS LOGIN')
             findTelaXY(loaderro_bt,True,True,0,0,True,True) #ATUALIZA A 1° PAGINA
             sleepTime(10,'IREMOS VERIFICAR NOVAMENTE')
             continue
 
-        #VERIFICANDO POSSÍVEL ERRO 01
+        #VERIFICANDO POSSÍVEL ERRO 02
         if(findTelaXY(erroupdate1_bt) or findTelaXY(erroupdate2_bt) or findTelaXY(erroinit_bt)):
             findTelaXY(erroupdate1_bt,True) #ATUALIZA APÓS UPDATE - MANUTENÇÃO 1
             findTelaXY(erroupdate2_bt,True) #ATUALIZA APÓS UPDATE - MANUTENÇÃO1
@@ -322,7 +336,7 @@ def CheckLogin():
             findTelaXY(erroinit_bt,True,True,0,0,True) #ATUALIZA APÓS UPDATE - MANUTENÇÃO1
             sleepTime(10,'ATUALIZANDO APÓS UMA POSSÍVEL MANUTENÇÃO DO JOGO')
             continue
-
+        #VERIFICANDO POSSÍVEL ERRO 03     
         if(findTelaXY(loaderro_bt) or findTelaXY(erromemory1_bt) or findTelaXY(erromemory2_bt)):
             print('O BOMBER DEVE ESTAR EM MANUTENÇÃO - TENTAREMOS LOGIN')
             findTelaXY(loaderro_bt,True,True,0,0,True) #ATUALIZA A 1° PAGINA
@@ -339,6 +353,7 @@ def CheckLogin():
             time.sleep(1)
             print('CLICANDO NO OK, AGUARDE UM MOMENTO')
             findTelaXY(ok_bt, True)
+            pyautogui.moveRel(100,0)
             print('AGUARDANDO BOTÃO CONECTED...')
             cont = 0
             while cont < 5 and (findTelaXY(go_conect)==False and findTelaXY(go_conect2)==False and findTelaXY(go_conect_meta)==False):
@@ -346,52 +361,84 @@ def CheckLogin():
                 cont = cont + 1
                 if(cont == 60):
                     break
-        #ENCONTRADO CONECT OK
+            continue
+        #ENCONTRADO CONECT
         if (findTelaXY(go_conect) or findTelaXY(go_conect2) or findTelaXY(go_conect_meta)):
+            time.sleep(1)
             print('ENCONTRADO BOTÃO CONECT...')
             time.sleep(1)
             print('CLICANDO NO BOTÃO CONECT, AGUARDE UM MOMENTO, ENQUANTO ATUALIZAMOS TODOS OS MAPAS')
             updateMapaHero()
             findTelaXY(go_conect,True,False,0,0,False,True) #CLICA APENAS NA 1° PAGINA
-            time.sleep(2)
+            time.sleep(1)
             findTelaXY(go_conect_meta,True,False,0,0,False,True)
+
+            time.sleep(1)
+            pyautogui.hotkey('f11')#TELA CHEIA
 
             print('AGUARDANDO BOTÃO ASSINAR...')
             cont = 0
-            while cont < 8 and (findTelaXY(go_select_sign_meta1)==False and findTelaXY(go_select_sign_meta11)==False 
+            while cont < 6 and (findTelaXY(go_select_sign_meta1)==False and findTelaXY(go_select_sign_meta11)==False 
             and findTelaXY(go_select_sign_meta2)==False and findTelaXY(go_select_sign_meta3)==False) :
                 time.sleep(2)
                 cont = cont + 1
-                if(cont == 30 or findTelaXY(go_conect_meta_no_network)):
+                if(cont == 6 or findTelaXY(go_conect_meta_no_network)):
                     print('TEMPO EXCEDIDO, POSSÍVEL FOI DESLOGADO DA METAMASK. FAREMOS O LOGIN NA METAMASK')
                     print('PARA FUNCIONAR, TERÁ QUE COLOCAR A SENHA PADRÃO NO ARQUIVO CONFIG.YAML - EM TODAS AS CONTAS DA METAMASK! FIQUE TRANQUILO')
                     print('FIQUE TRANQUILO, NÃO IREMOS ROUBAR NENHUM VALOR DA SUA CARTEIRA METAMASK :)')
                     time.sleep(1)
                     if(findTelaXY(ok_bt)):
-                        findTelaXY(ok_bt, True)
+                        findTelaXY(ok_bt, True,False,0,0,False,True)
+                        pyautogui.moveRel(100,0)
                         sleepTime(10,'IREMOS VERIFICAR NOVAMENTE')
                         
-                    findTelaXY(go_conect_meta_click_senha1,True)
-                    time.sleep(3)
-                    findTelaXY(go_conect_meta_click_senha2,True)
+                    #findTelaXY(go_conect_meta_click_senha1,True,False,200,0,False,True)
+                    #time.sleep(3)
+                    #findTelaXY(go_conect_meta_click_senha2,True,False,200,0,False,True)
+                    time.sleep(2)
+                    pyautogui.hotkey('alt','shift','m')
                     time.sleep(6)
+
                     if(findTelaXY(go_conect_meta_click_chk2)):
-                        pyautogui.typewrite("Kadu1221@", interval=0.30) 
+                        #findTelaXY(go_conect_meta_click_chk2,True)
+                        time.sleep(2)
+                        pyautogui.typewrite(c_time_loop['login_senha_metamask'], interval=0.30) 
                         time.sleep(1)
                         pyautogui.hotkey('enter')
                         time.sleep(6)
                         if(findTelaXY(go_conect_meta_click_chk1)):
-                            findTelaXY(go_conect_meta_click_chk1,True,False,200)
-                            #depois refaz e verifica o botão confirm assinatura
-                    #if(findTelaXY(go_select_sign_meta11)):
-                        #BOTÃO ASSINAR         
+                            findTelaXY(go_conect_meta_click_chk1,True,False,200,0,False,True)
+                            pyautogui.hotkey('f5')
+                            time.sleep(1)
+                            #pyautogui.hotkey('f11')#TELA CHEIA
+                            sleepTime(5,'ATUALIZANDO A PAGINA PARA EVITAR POSSÍVEIS BUGS')  
 
+                    elif(findTelaXY(go_conect_meta_click_chk1)):
+                        findTelaXY(go_conect_meta_click_chk1,True,False,200,0,False,True)
+                        pyautogui.hotkey('f5')
+                        time.sleep(1)
+                        #pyautogui.hotkey('f11')#TELA CHEIA
+                        sleepTime(5,'ATUALIZANDO A PAGINA PARA EVITAR POSSÍVEIS BUGS')
+    
                     break
+            
             #CLICANDO NO BOTÃO ASSINAR1
             if(findTelaXY(go_select_sign_meta2) or findTelaXY(go_select_sign_meta3)):
                 print('CLICANDO NO BOTÃO ASSINAR, AGUARDE UM MOMENTO ATÉ A TELA PRINCIPAL')
+
                 findTelaXY(go_select_sign_meta2,True)
+                time.sleep(1)
+                pyautogui.moveRel(100,0)
+                findTelaXY(go_select_sign_meta2,True)
+                time.sleep(1)
+                pyautogui.moveRel(100,0)
+                time.sleep(1)
                 findTelaXY(go_select_sign_meta3,True)
+                time.sleep(1)
+                pyautogui.moveRel(100,0)
+                findTelaXY(go_select_sign_meta3,True)
+                time.sleep(1)
+                pyautogui.moveRel(100,0)
                 print('AGUARDANDO A TELA PRINCIPAL DO BOMB PARA SELEÇÃO DOS HEROES...')
                 cont = 0
                 while cont < 10 and findTelaXY(go_hero_work_ini) == False:
@@ -399,35 +446,12 @@ def CheckLogin():
                     cont = cont + 1
                     if(cont == 60):
                         break
-            elif(findTelaXY(go_select_sign_meta1) or findTelaXY(go_select_sign_meta11)):
-                print('CLICANDO NO BOTÃO ASSINAR, TELA CHEIA. AGUARDE UM MOMENTO ATÉ A TELA PRINCIPAL')
-                findTelaXY(go_select_sign_meta1,True,True,-50,-200)
-                findTelaXY(go_select_sign_meta11,True,True,-50,-200)
-                time.sleep(2)
-                findTelaXY(go_select_sign_meta2,True)
-                findTelaXY(go_select_sign_meta3,True)
-                print('AGUARDANDO A TELA PRINCIPAL DO BOMB PARA SELEÇÃO DOS HEROES...')
-                cont = 0
-                while cont < 10 and findTelaXY(go_hero_work_ini) == False:
-                    time.sleep(2)
-                    cont = cont + 1
-                    if(cont == 60):
-                        break
-        if(findTelaXY(go_hero_work_ini)):
-            sleepTime(2,'INICIANDO FULL - TODOS OS HEROES - ÀS {} '.format(horarioexato()))
-            ################APENAS SELEÇÃO ALL - HEROES#############
-            findTelaXY(go_hero_work_ini,True)
-            #print('COLOCANDO OS HEROS PARA TRABALHAR')
-            time.sleep(2)
-            findTelaXY(go_all_work,True)
-            time.sleep(2)
-            findTelaXY(x_button,True)
-            print('VOLTANDO A TELA PRINCIPAL NO MAPA E ENTRANDO NO MAPA')
-            findTelaXY(go_map,True,True,0,0,False,True)
-            
-            if (findTelaXY(go_conect) or findTelaXY(go_conect2) or findTelaXY(go_conect_meta)):
-                print('Entrei aqui')
-                continue
+                time.sleep(1)
+                heroFullWork()
+                #pyautogui.hotkey('f11')#TELA CHEIA    
+                #return False
+
+            pyautogui.hotkey('f11')#TELA CHEIA    
 
         return False              
 ##########################################################################################
@@ -546,12 +570,12 @@ def main():
  ###########################AMBIENTE DE TESTE########################################   
     #while True:
     #findTelaXY(go_conect_meta_click_chk1,True,False,200)
-    CheckLogin()
+    #CheckLogin()
     #return
 
     
 
-    return 
+    #return 
  ###########################AMBIENTE DE TESTE########################################
     while True:
         
