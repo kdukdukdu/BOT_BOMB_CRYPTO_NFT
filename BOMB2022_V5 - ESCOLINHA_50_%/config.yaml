@@ -1,0 +1,26 @@
+---
+  time_intervals:
+    check_bt_login: 0.2 #min - VERIFICAR SE PRECISA FAZER LOGIN
+    time_refresh_position: 9 #min ATUALIZAÇÃO SAIR E ENTRAR EM TODOS OS MAPAS
+    hero_full_work: 80 #min A CADA X MINUTOS COLOCA TODOS OS BOMBER-HEROS PRA TRABALHAR
+    hero_comum_work: 50 #min A CADA X MINUTOS COLOCA TODOS OS BOMBER-HEROS PRA TRABALHAR
+    hero_raro_work: 70 #min A CADA X MINUTOS COLOCA TODOS OS BOMBER-HEROS PRA TRABALHAR
+    hero_sraro_work: 90 #min A CADA X MINUTOS COLOCA TODOS OS BOMBER-HEROS PRA TRABALHAR
+    hero_epico_work: 110 #min A CADA X MINUTOS COLOCA TODOS OS BOMBER-HEROS PRA TRABALHAR
+    time_reboot_bot: 240 #min A CADA X MINUTOS REINICIA TODAS AS CONTAS - REBOOT GERAL
+  time_work_mapa: 
+    hero_full_work: 40 #AQUI SERA DEFINIDO QUANTO TEMPO O BOMBER-HERO IRA TRABALHAR ATÉ COLOCA-LOS PARA DESCANSAR
+    hero_comum_work: 20
+    hero_raro_work: 15 
+    hero_sraro_work: 10
+    hero_epico_work: 8
+  zoom_nav_bomber: 
+    zoom_33: True  #TRUE  ATIVO  
+    zoom_50: False  #TRUE  ATIVO  
+  select_bomber_tp:
+    full_: True
+    raridade_: False
+  correc_bug_tela:
+    x: 0
+    y: -40
+#AQUI SERA DEFINIDO QUAL A ZOOM DO NAVEGADOR NAS CONTAS 33% OU 50%

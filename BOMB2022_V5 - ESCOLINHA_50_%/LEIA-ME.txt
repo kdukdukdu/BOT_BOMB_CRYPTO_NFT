@@ -1,0 +1,24 @@
+LEIA-ME!
+SE GOSTOU DO BOOT BOMBCRYPTO E QUER ME PAGAR UM CAFÉ/BCOINHA :).
+MINHA CARTEIRA
+
+CARTEIRA WALET: 0xAc8b000865BdBcD6C4eD4Ac85475Afd57DD2244D
+
+https://github.com/kdukdukdu/BOT_BOMB_CRYPTO_NFT
+
+############ NOVIDADE ############
+>> MELHORA NA SELEÇÃO DO BOMBER'S NO MAPA - POR RARIDADE
+>> NO ARQUIVO "config.yaml" PODERÁ SELECIONAR O TAMANHO/ZOOM QUE IRÁ UTILIZAR PARA ABRIR O JOGO/CONTAS BOMBERCRYPTO 33% OU 50%
+
+##################################
+
+#OBS: NÃO ESQUEÇA DE JÁ ESTAR CONECTADO NA METAMASK
+
+####################################################################
+#CLICK BOTÃO MOUSE DIREITO EM CIMA DO ARQUIVO BOMB2022_V4.py, ESCOLHAR ABRIR COM "PYTHON". 
+AUTOMATICAMENTE, SERÁ ABERTO UMA JANELA DO CMD (PODE DEIXAR MINIMIZADA)
+
+####################################################################
+
+####################################################################
+AGUARDA O BOOT RODAR :)

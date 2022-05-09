@@ -1,0 +1,30 @@
+---
+  time_intervals: # TODO O TEMPO SERA EM MINUTOS
+    check_bt_login: 0.2
+    time_refresh_position: 9 
+    hero_inhouse_chk: 20 #TIME PARA VERIFICAR HEROES PARA COLOCAR NA HOUSE - RED - - SE True select_bomber_tp->house_
+    hero_full_work: 80 #TIME FULL WORK - HEROES - SE True select_bomber_tp->full_
+    hero_comum_work: 50 #TIME FULL WORK - HEROES - SE True select_bomber_tp->raridade_ OBS DESATIVADO
+    hero_raro_work: 70 #TIME FULL WORK - HEROES - SE True select_bomber_tp->raridade_ OBS DESATIVADO
+    hero_sraro_work: 90 #TIME FULL WORK - HEROES - SE True select_bomber_tp->raridade_ OBS DESATIVADO
+    hero_epico_work: 110 #TIME FULL WORK - HEROES - SE True select_bomber_tp->raridade_ OBS DESATIVADO
+    time_reboot_bot: 240 #TIME FULL WORK - HEROES - SE True select_bomber_tp->raridade_ OBS DESATIVADO
+  time_work_mapa: #TEMPO TOTAL TRABALHANDO NO MAPA - DESATIVAR E VOLTAR PRA TELA PRINCIPAL ATE A DESATIVACAO
+    hero_full_work: 40 #TEMPO PARA O MODO FULL HEROES - SE True select_bomber_tp->full_
+    hero_comum_work: 20 #DEATIVADO
+    hero_raro_work: 15 #DEATIVADO
+    hero_sraro_work: 10 #DEATIVADO
+    hero_epico_work: 8 #DEATIVADO
+    hero_inhouse_chk: 20 # TEMPO PARA MODO FULL HEROES - SE True select_bomber_tp->full_
+  zoom_nav_bomber: #ZOOM PADRAO - 33%
+    zoom_33: True
+    zoom_100: False
+  select_bomber_tp: #SELECAO TIPO DE ROBO A SER UTILIZADO :)
+    full_: True #SE TRUE - COLOCA TODOS OS HEROES PARA TRABALHAR PELO TEMPO DEFINIDO  
+    raridade_: False #OBS DESATIVADO
+    house_: False #SE TRUE - COLOCA OS HEROES PARA TRABALHAR E VERIFICA OS REDS - COLOCA NA CASA
+  correc_bug_tela:
+    x: 0 #CORRECAO DE BUG - CLIQUE POSICAO TELA - CASO NECESSARIO
+    y: -40 #CORRECAO DE BUG - CLIQUE POSICAO TELA - CASO NECESSARIO
+    inhouse_limit_red_chk: 1 #DEFINA O VALOR ENTRE 0 E 9 - OS PADRÕES DE BUSCA ENERGIA BAIXA PARA COLOCAR NA HOUSE
+    full_mulcont_inhouse: True

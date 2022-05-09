@@ -1,0 +1,10 @@
+opencv-python
+python-time
+numpy
+matplotlib
+mss
+pyautogui
+pyyaml
+requests
+datetime2
+random2

@@ -1,0 +1,32 @@
+---
+  time_intervals: # TODO O TEMPO SERA EM MINUTOS
+    check_bt_login: 0.1 #TEMPO PARA CHECK - ERRO LOGIN
+    time_refresh_position: 9 #TEMPO PARA ATUALIZAR TELA DOS MAPAS
+    hero_full_work: 60 #TP HOUSE_ DEVE ESTAR TRUE 
+    hero_comum_work: 50 #TP RARIDADE_ DEVE ESTAR TRUE
+    hero_raro_work: 70 #TPRARIDADE_ DEVE ESTAR TRUE
+    hero_sraro_work: 90 #TP RARIDADE_ DEVE ESTAR TRUE
+    hero_epico_work: 110 #TP RARIDADE_ DEVE ESTAR TRUE
+    time_reboot_bot: 1000 #TP RARIDADE_ DEVE ESTAR TRUE
+    hero_inhouse_chk: 20 #TP HOUSE_ DEVE ESTAR TRUE
+ ################TEMPO EM QUE FICARA TRABALHANDO ATÉ SER DESATIVADO - ESTA EM DESENVOLVIMENTO #########################################
+  time_work_mapa: #TEMPO TOTAL TRABALHANDO NO MAPA - DESATIVAR E VOLTAR PRA TELA PRINCIPAL ATE A DESATIVACAO
+    hero_full_work: 40 #TEMPO PARA O MODO FULL HEROES - SE True select_bomber_tp->full_
+    hero_comum_work: 20 #DEATIVADO
+    hero_raro_work: 15 #DEATIVADO
+    hero_sraro_work: 10 #DEATIVADO
+    hero_epico_work: 8 #DEATIVADO
+    hero_inhouse_chk: 20 # TEMPO PARA MODO FULL HEROES - SE True select_bomber_tp->full_
+##############################################################################################################################
+  zoom_nav_bomber: #ZOOM PADRAO - 33%
+    zoom_33: False #PADRAO MULTACOUNT - FULL TIME
+    zoom_100: True #PADRAO CASA (CASO UTILIZE O MODO CASA)
+  select_bomber_tp: #SELECAO TIPO DE ROBO A SER UTILIZADO :)
+    full_: False #SE TRUE - COLOCA TODOS OS HEROES PARA TRABALHAR PELO TEMPO DEFINIDO - MULTACOUNT 
+    house_: True #SE TRUE - COLOCA OS HEROES PARA TRABALHAR E VERIFICA OS REDS - COLOCA NA CASA
+    raridade_: False #OBS DESATIVADO
+  correc_bug_tela:
+    x: 0 #CORRECAO DE BUG - CLIQUE POSICAO TELA - CASO NECESSARIO
+    y: -40 #CORRECAO DE BUG - CLIQUE POSICAO TELA - CASO NECESSARIO
+  config_house_zoom_100:
+    inhouse_limit_red_chk: 1 # (MODO HOUSE_ TRUE) DEFINE A QTD DE VERIFICAÇOES NO MAPA DOS HEROES RECOMENDO ATE 3X EU RECOMENDO
